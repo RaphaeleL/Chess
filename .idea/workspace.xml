@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f05f5bc6-fcce-4039-ae35-b4adeb6e05ee" name="Changes" comment="Pawn 1-step bug fix">
+    <list default="true" id="f05f5bc6-fcce-4039-ae35-b4adeb6e05ee" name="Changes" comment="check if target field is moveable">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pieces/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pieces/Knight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pieces/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pieces/Pawn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Movement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Movement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +67,7 @@
       <workItem from="1652453629074" duration="2599000" />
       <workItem from="1652457181702" duration="811000" />
       <workItem from="1652512384612" duration="520000" />
-      <workItem from="1652603839887" duration="2791000" />
+      <workItem from="1652603839887" duration="4663000" />
     </task>
     <task id="LOCAL-00001" summary="Basic Board and Movement implementation">
       <created>1652440528544</created>
@@ -98,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652606296241</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="check if target field is moveable">
+      <created>1652606671855</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1652606671855</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,6 +126,7 @@
     <MESSAGE value="Pawn Movements (without en-passant)" />
     <MESSAGE value="Knight Movements" />
     <MESSAGE value="Pawn 1-step bug fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pawn 1-step bug fix" />
+    <MESSAGE value="check if target field is moveable" />
+    <option name="LAST_COMMIT_MESSAGE" value="check if target field is moveable" />
   </component>
 </project>
