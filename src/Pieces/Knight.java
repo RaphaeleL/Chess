@@ -13,7 +13,6 @@ public class Knight extends Piece {
 
     @Override
     public boolean checkMove(Piece[][] board, int[] move, boolean side) {
-        // TODO is that correct?
         Movement movementUtil = new Movement();
         List<int[]> allowedMovements = new ArrayList<>();
         int[][] allowedKeys = {{2, 1}, {2, -1}, {-2, 1}, {-2, -1}, {1, -2}, {1, 2}, {-1, -2}, {-1, 2}};
@@ -22,7 +21,7 @@ public class Knight extends Piece {
             x = move[0] - allowedKey[0];
             y = move[1] - allowedKey[1];
             if (movementUtil.inBounds(x, y)) {
-                if (!movementUtil.isFree(board, x, y)) {
+                if (!movementUtil.isFree(board, x, y, side)) {
                     allowedMovements.add(new int[] { x, y});
                 }
             }

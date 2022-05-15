@@ -23,8 +23,20 @@ public class Movement {
         return false;
     }
 
-    public boolean isFree(Piece[][] board, int x, int y) {
-        return board[x][y].getClass().isInstance(new Empty());
+    public boolean isFree(Piece[][] board, int x, int y, boolean mySide) {
+        // not empty but my figure
+        if ((!board[x][y].getClass().isInstance(new Empty())) && (board[x][y].getSide() == mySide)) {
+            return false;
+        }
+        // not empty not my figure
+        if ((!board[x][y].getClass().isInstance(new Empty())) && (board[x][y].getSide() != mySide)) {
+            return true;
+        }
+        // empty
+        if (board[x][y].getClass().isInstance(new Empty())) {
+            return true;
+        }
+        return false;
     }
 
     public boolean inBounds(int x, int y) {
