@@ -27,11 +27,6 @@ public class Knight extends Piece {
                 }
             }
         }
-
-        for (int[] movement : allowedMovements) {
-            board[movement[0]][movement[1]] = new King(side, "_");
-        }
-
         return movementUtil.isAllowed(allowedMovements, move);
     }
 
