@@ -4,11 +4,18 @@ import Pieces.*;
 public class Board {
     private Piece board[][] = new Piece[8][8];
     private boolean winner = false;
-    private boolean currentSide = true;
+    private boolean currentSide = !true;
 
     public Board() {
         this.fillBoard();
         this.printBoard();
+    }
+
+    public Piece getFigure(int x, int y) {
+        return this.board[x][y];
+    }
+    public void setFigure(int x, int y, Piece figure) {
+        this.board[x][y] = figure;
     }
 
     public boolean isWinner() {
@@ -27,21 +34,13 @@ public class Board {
         this.currentSide = currentSide;
     }
 
-    public Piece[][] getBoard() {
-        return board;
-    }
-
-    public void setBoard(Piece[][] board) {
-        this.board = board;
-    }
-
     public void setField(int [] move) {
         int x1 = move[!this.currentSide ? 0 : 1];
         int y1 = move[!this.currentSide ? 1 : 0];
         int x2 = move[3];
         int y2 = move[2];
         Piece toMove = this.board[x1][y1];
-        if (toMove.checkMove(this.board, new int [] {x1, y1, x2, y2}, this.currentSide)) {
+        if (toMove.checkMove(this, new int [] {x1, y1, x2, y2}, this.currentSide)) {
             this.board[x1][y1] = new Empty();
             this.board[x2][y2] = toMove;
         } else {

@@ -1,5 +1,6 @@
 package Pieces;
 
+import Board.Board;
 import Utils.Movement;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class Knight extends Piece {
     }
 
     @Override
-    public boolean checkMove(Piece[][] board, int[] move, boolean side) {
+    public boolean checkMove(Board board, int[] move, boolean side) {
         Movement movementUtil = new Movement();
         List<int[]> allowedMovements = new ArrayList<>();
         int[][] allowedKeys = {{2, 1}, {2, -1}, {-2, 1}, {-2, -1}, {1, -2}, {1, 2}, {-1, -2}, {-1, 2}};

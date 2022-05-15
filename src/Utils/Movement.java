@@ -1,7 +1,6 @@
 package Utils;
 import Board.Board;
 import Pieces.Empty;
-import Pieces.Piece;
 
 import java.util.List;
 import java.util.Scanner;
@@ -23,17 +22,17 @@ public class Movement {
         return false;
     }
 
-    public boolean isFree(Piece[][] board, int x, int y, boolean mySide) {
+    public boolean isFree(Board board, int x, int y, boolean mySide) {
         // not empty but my figure
-        if ((!board[x][y].getClass().isInstance(new Empty())) && (board[x][y].getSide() == mySide)) {
+        if ((!board.getFigure(x, y).getClass().isInstance(new Empty())) && (board.getFigure(x, y).getSide() == mySide)) {
             return false;
         }
         // not empty not my figure
-        if ((!board[x][y].getClass().isInstance(new Empty())) && (board[x][y].getSide() != mySide)) {
+        if ((!board.getFigure(x, y).getClass().isInstance(new Empty())) && (board.getFigure(x, y).getSide() != mySide)) {
             return true;
         }
         // empty
-        if (board[x][y].getClass().isInstance(new Empty())) {
+        if (board.getFigure(x, y).getClass().isInstance(new Empty())) {
             return true;
         }
         return false;
@@ -48,7 +47,7 @@ public class Movement {
 
     private int[] prepare(String movement) {
         String[] move = movement.split("");
-        return new int[]{
+        return new int[] {
                 this.letterToNumber(move[0]) - 1,
                 Integer.parseInt(move[1]) - 1,
                 this.letterToNumber(move[3]) - 1,

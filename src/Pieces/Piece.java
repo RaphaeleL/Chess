@@ -22,8 +22,6 @@ public class Piece {
         this.representation = representation;
     }
 
-    public Piece() {}
-
     public Piece(String representation) {
         this.representation = representation;
     }
@@ -39,8 +37,7 @@ public class Piece {
         this.representation = representation;
     }
 
-    public boolean checkMove(Piece[][] board, int [] move, boolean side) {
-        return true;
+    public boolean checkMove(Board board, int [] move, boolean side) {
+        return false;
     }
-
 }

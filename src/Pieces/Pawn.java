@@ -1,4 +1,5 @@
 package Pieces;
+import Board.Board;
 import Utils.Movement;
 
 import java.util.*;
@@ -10,7 +11,7 @@ public class Pawn extends Piece {
     }
 
     @Override
-    public boolean checkMove(Piece[][] board, int [] move, boolean side) {
+    public boolean checkMove(Board board, int [] move, boolean side) {
         // TODO: en passent
         Movement movementUtil = new Movement();
         List<int[]> allowedMovements = new ArrayList<>();
@@ -21,6 +22,7 @@ public class Pawn extends Piece {
             if (move[0] == baseline) {
                 allowedMovements.add(new int[] { side ? move[0] - 2 : move[0] + 2, move[1]});
             }
+            // TODO a2,a3 not working
             x = side ? move[0] - allowedKey[0] : move[0] + allowedKey[0];
             y = side ? move[1] - allowedKey[1] : move[1] + allowedKey[1];
             if (movementUtil.inBounds(x, y)) {
