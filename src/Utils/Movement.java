@@ -28,7 +28,7 @@ public class Movement {
     }
 
     public boolean inBounds(int x, int y) {
-        if ((0 <= x && x <= 8) && (0 <= y && y <= 8)) {
+        if ((0 <= x && x < 8) && (0 <= y && y < 8)) {
             return true;
         } 
         return false;

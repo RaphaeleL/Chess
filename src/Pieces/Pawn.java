@@ -21,10 +21,10 @@ public class Pawn extends Piece {
             if (move[0] == baseline) {
                 allowedMovements.add(new int[] { side ? move[0] - 2 : move[0] + 2, move[1]});
             }
-            x = side ? move[0] - allowedKey[0] : move[0] - allowedKey[0];
-            y = side ? move[1] - allowedKey[1] : move[1] - allowedKey[1];
+            x = move[0] - allowedKey[0];
+            y = move[1] - allowedKey[1];
             if (movementUtil.inBounds(x, y) && !movementUtil.isFree(board, x, y)) {
-              allowedMovements.add(new int[] { x, y});
+                allowedMovements.add(new int[] { x, y});
             }
         }
         return movementUtil.isAllowed(allowedMovements, move);
