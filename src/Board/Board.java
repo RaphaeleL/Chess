@@ -4,7 +4,7 @@ import Pieces.*;
 public class Board {
     private Piece board[][] = new Piece[8][8];
     private boolean winner = false;
-    private boolean currentSide = !true;
+    private boolean currentSide = true;
 
     public Board() {
         this.fillBoard();
@@ -35,14 +35,10 @@ public class Board {
     }
 
     public void setField(int [] move) {
-        int x1 = move[!this.currentSide ? 0 : 1];
-        int y1 = move[!this.currentSide ? 1 : 0];
-        int x2 = move[3];
-        int y2 = move[2];
-        Piece toMove = this.board[x1][y1];
-        if (toMove.checkMove(this, new int [] {x1, y1, x2, y2}, this.currentSide)) {
-            this.board[x1][y1] = new Empty();
-            this.board[x2][y2] = toMove;
+        Piece toMove = this.getFigure(move[1], move[0]);
+        if (toMove.checkMove(this, new int [] {move[1], move[0], move[3], move[2]}, this.currentSide)) {
+            this.setFigure(move[1], move[0], new Empty());
+            this.setFigure(move[3], move[2], toMove);
         } else {
             System.out.println("Move is not allowed. Try again!\n".toUpperCase());
             this.setCurrentSide(!this.isCurrentSide());

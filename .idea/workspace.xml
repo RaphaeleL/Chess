@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f05f5bc6-fcce-4039-ae35-b4adeb6e05ee" name="Changes" comment="pawn one-step bug fix">
+    <list default="true" id="f05f5bc6-fcce-4039-ae35-b4adeb6e05ee" name="Changes" comment="refactor a little bit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pieces/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pieces/Knight.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pieces/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pieces/Pawn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pieces/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pieces/Piece.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utils/Movement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Movement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +70,7 @@
       <workItem from="1652512384612" duration="520000" />
       <workItem from="1652603839887" duration="4881000" />
       <workItem from="1652623856671" duration="893000" />
-      <workItem from="1652625473999" duration="824000" />
+      <workItem from="1652625473999" duration="2731000" />
     </task>
     <task id="LOCAL-00001" summary="Basic Board and Movement implementation">
       <created>1652440528544</created>
@@ -116,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652608539030</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="refactor a little bit">
+      <created>1652626390015</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1652626390015</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,6 +145,7 @@
     <MESSAGE value="Pawn 1-step bug fix" />
     <MESSAGE value="check if target field is moveable" />
     <MESSAGE value="pawn one-step bug fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="pawn one-step bug fix" />
+    <MESSAGE value="refactor a little bit" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor a little bit" />
   </component>
 </project>

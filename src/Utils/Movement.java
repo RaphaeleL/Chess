@@ -1,6 +1,7 @@
 package Utils;
 import Board.Board;
 import Pieces.Empty;
+import Pieces.Piece;
 
 import java.util.List;
 import java.util.Scanner;
@@ -39,10 +40,7 @@ public class Movement {
     }
 
     public boolean inBounds(int x, int y) {
-        if ((0 <= x && x < 8) && (0 <= y && y < 8)) {
-            return true;
-        } 
-        return false;
+        return ((0 <= x && x < 8) && (0 <= y && y < 8));
     }
 
     private int[] prepare(String movement) {
@@ -50,8 +48,8 @@ public class Movement {
         return new int[] {
                 this.letterToNumber(move[0]) - 1,
                 Integer.parseInt(move[1]) - 1,
-                this.letterToNumber(move[3]) - 1,
-                Integer.parseInt(move[4]) - 1
+                this.letterToNumber(move[2]) - 1,
+                Integer.parseInt(move[3]) - 1
         };
     }
 
