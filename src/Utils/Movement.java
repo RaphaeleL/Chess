@@ -1,7 +1,9 @@
 package Utils;
 import Board.Board;
 import Pieces.Empty;
+import Pieces.Piece;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Movement {
@@ -9,6 +11,27 @@ public class Movement {
 
     public Movement() {
         this.scanner = new Scanner(System.in);
+    }
+
+    public boolean isAllowed(List<int[]> allowedMovements, int [] move) {
+        for (int[] movement : allowedMovements) {
+            if ((movement[0] == move[2]) && (movement[1] == move[3])) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean isFree(Piece[][] board, int x, int y) {
+        return board[x][y].getClass().isInstance(new Empty());
+    }
+
+    public boolean inBounds(int x, int y) {
+        if ((0 <= x && x <= 8) && (0 <= y && y <= 8)) {
+            return true;
+        } 
+        return false;
     }
 
     private int[] prepare(String movement) {

@@ -1,12 +1,10 @@
 package Board;
 import Pieces.*;
 
-import java.util.Locale;
-
 public class Board {
     private Piece board[][] = new Piece[8][8];
     private boolean winner = false;
-    private boolean currentSide = false;
+    private boolean currentSide = true;
 
     public Board() {
         this.fillBoard();
@@ -38,22 +36,18 @@ public class Board {
     }
 
     public void setField(int [] move) {
-        int x1, y1;
+        int x1 = move[!this.currentSide ? 0 : 1];
+        int y1 = move[!this.currentSide ? 1 : 0];
         int x2 = move[3];
         int y2 = move[2];
-
-        if (!this.currentSide) {
-            x1 = move[0];
-            y1 = move[1];
-        } else {
-            x1 = move[1];
-            y1 = move[0];
-        }
-
         Piece toMove = this.board[x1][y1];
-        this.board[x1][y1] = new Empty();
-        this.board[x2][y2] = toMove;
-
+        if (toMove.checkMove(this.board, new int [] {x1, y1, x2, y2}, this.currentSide)) {
+            this.board[x1][y1] = new Empty();
+            this.board[x2][y2] = toMove;
+        } else {
+            System.out.println("Move is not allowed. Try again!\n".toUpperCase());
+            this.setCurrentSide(!this.isCurrentSide());
+        }
     }
 
     public void fillBoard() {
@@ -100,6 +94,6 @@ public class Board {
             }
             System.out.println();
         }
-        System.out.println("White");
+        System.out.println("White\n");
     }
 }
