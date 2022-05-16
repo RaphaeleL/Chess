@@ -1,12 +1,27 @@
 package Board;
 import Pieces.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Board {
     private final Piece[][] board = new Piece[8][8];
     private boolean winner = false;
-    private boolean currentSide = true;
+    private boolean currentSide;
 
-    public Board() {
+    private List<Piece> deadWhites = new ArrayList<>();
+    private List<Piece> deadBlacks = new ArrayList<>();
+
+    public void addDeadWhite(Piece piece) {
+        deadWhites.add(piece);
+    }
+
+    public void addDeadBlack(Piece piece) {
+        deadBlacks.add(piece);
+    }
+
+    public Board(boolean color) {
+        this.currentSide = color;
         this.fillBoard();
         this.printBoard();
     }
@@ -85,7 +100,11 @@ public class Board {
         System.out.println("+-------------+");
         System.out.println("| Black       |");
         System.out.println("+-------------+");
-        System.out.println("a1                              h1");
+        System.out.print("Dead White Figures: ");
+        for (Piece deadWhite : this.deadWhites) {
+            System.out.print(deadWhite.getRepresentation() + " ");
+        }
+        System.out.println("\n\na1                              h1");
         System.out.println("   +--------------------------+");
         for (Piece[] x : this.board) {
             System.out.print("   |  ");
@@ -96,9 +115,13 @@ public class Board {
             System.out.println();
         }
         System.out.println("   +--------------------------+");
-        System.out.println("a8                              h8");
+        System.out.println("a8                              h8\n");
+        System.out.println("\t\t\t\t\tDead Black Figures: ");
+        for (Piece deadBlack : this.deadBlacks) {
+            System.out.print(deadBlack.getRepresentation() + " ");
+        }
         System.out.println("\t\t\t\t\t+-------------+");
         System.out.println("\t\t\t\t\t| White       |");
-        System.out.println("\t\t\t\t\t+-------------+");
+        System.out.println("\t\t\t\t\t+-------------+\n");
     }
 }
