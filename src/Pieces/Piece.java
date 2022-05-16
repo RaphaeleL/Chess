@@ -22,6 +22,8 @@ public class Piece {
         this.representation = representation;
     }
 
+    public Piece() {}
+
     public Piece(String representation) {
         this.representation = representation;
     }
