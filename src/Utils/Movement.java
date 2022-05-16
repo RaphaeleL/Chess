@@ -44,11 +44,6 @@ public class Movement {
         }
         // 2. field is not empty, blocked with his figure -> true
         if (fromPiece.getSide() != board.getFigure(x, y).getSide()) {
-            if (board.isCurrentSide() == board.getFigure(x, y).getSide()) {
-                board.addDeadWhite(fromPiece);
-            } else if (board.isCurrentSide() != board.getFigure(x, y).getSide()) {
-                board.addDeadBlack(fromPiece);
-            }
             return false;
         }
         // 3. field is not empty, blocked with my figure -> false

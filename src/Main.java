@@ -11,7 +11,10 @@ public class Main {
         while (!board.isWinner()) {
             movement.move(board);
             board.setCurrentSide(!board.isCurrentSide());
+            board.checkWinner();
         }
+
+        board.handleWinner();
 
     }
 }

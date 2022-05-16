@@ -2,7 +2,6 @@ package Pieces;
 
 import Board.Board;
 import Utils.Movement;
-
 import java.util.ArrayList;
 import java.util.List;
 

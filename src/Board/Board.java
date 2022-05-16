@@ -7,18 +7,8 @@ import java.util.List;
 public class Board {
     private final Piece[][] board = new Piece[8][8];
     private boolean winner = false;
-    private boolean currentSide;
-
-    private List<Piece> deadWhites = new ArrayList<>();
-    private List<Piece> deadBlacks = new ArrayList<>();
-
-    public void addDeadWhite(Piece piece) {
-        deadWhites.add(piece);
-    }
-
-    public void addDeadBlack(Piece piece) {
-        deadBlacks.add(piece);
-    }
+    private boolean winnerSide;
+    private boolean currentSide; // true = white
 
     public Board(boolean color) {
         this.currentSide = color;
@@ -39,6 +29,41 @@ public class Board {
 
     public void setWinner(boolean winner) {
         this.winner = winner;
+    }
+
+    public void checkWinner() {
+        int blackCount = 0;
+        int whiteCount = 0;
+        for (Piece[] tmp : this.board) {
+            for (Piece piece : tmp) {
+                if (!piece.getClass().isInstance(new Empty())) {
+                    if (piece.getSide()) {
+                        whiteCount++;
+                    } else {
+                        blackCount++;
+                    }
+                }
+            }
+        }
+        if (blackCount == 0) {
+            this.setWinner(true);
+            this.winnerSide = false;
+        } else if (whiteCount == 0) {
+            this.setWinner(true);
+            this.winnerSide = true;
+        }
+    }
+
+    public void handleWinner() {
+        System.out.println("==========================================================");
+        System.out.println("==========================================================");
+        if (this.winnerSide) {
+            System.out.println("White won.");
+        } else if (!this.winnerSide) {
+            System.out.println("Black won.");
+        }
+        System.out.println("==========================================================");
+        System.out.println("==========================================================");
     }
 
     public boolean isCurrentSide() {
@@ -100,11 +125,7 @@ public class Board {
         System.out.println("+-------------+");
         System.out.println("| Black       |");
         System.out.println("+-------------+");
-        System.out.print("Dead White Figures: ");
-        for (Piece deadWhite : this.deadWhites) {
-            System.out.print(deadWhite.getRepresentation() + " ");
-        }
-        System.out.println("\n\na1                              h1");
+        System.out.println("\na1                              h1");
         System.out.println("   +--------------------------+");
         for (Piece[] x : this.board) {
             System.out.print("   |  ");
@@ -116,10 +137,6 @@ public class Board {
         }
         System.out.println("   +--------------------------+");
         System.out.println("a8                              h8\n");
-        System.out.println("\t\t\t\t\tDead Black Figures: ");
-        for (Piece deadBlack : this.deadBlacks) {
-            System.out.print(deadBlack.getRepresentation() + " ");
-        }
         System.out.println("\t\t\t\t\t+-------------+");
         System.out.println("\t\t\t\t\t| White       |");
         System.out.println("\t\t\t\t\t+-------------+\n");
