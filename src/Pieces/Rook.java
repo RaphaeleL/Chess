@@ -61,7 +61,6 @@ public class Rook extends Piece {
         Movement movementUtil = new Movement();
         List<int[]> allowedMovements = new ArrayList<>();
         int x, y;
-
         List<List<int[]>> allMovements = new ArrayList<>(4);
         allMovements.add(0, getAllRookMovesA(move));
         allMovements.add(1, getAllRookMovesB(move));
@@ -74,14 +73,18 @@ public class Rook extends Piece {
                 y = movement[1];
                 if (movementUtil.inBounds(x, y)) {
                     if (board.getFigure(x, y).getClass().isInstance(new Empty())) {
-                        allowedMovements.add(new int[] {x, y});
+                        if (movementUtil.isFree(board, x, y, side, board.getFigure(move[0], move[1]))) {
+                            allowedMovements.add(new int[] {x, y});
+                        }
                     } else {
+                        if (board.getFigure(x, y).getSide() != board.getFigure(move[0], move[1]).getSide()) {
+                            allowedMovements.add(new int[] {x, y});
+                        }
                         break;
                     }
                 }
             }
         }
-
         return movementUtil.isAllowed(allowedMovements, move);
     }
 

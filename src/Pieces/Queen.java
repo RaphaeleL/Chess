@@ -136,6 +136,9 @@ public class Queen extends Piece {
                     if (board.getFigure(x, y).getClass().isInstance(new Empty())) {
                         allowedMovements.add(new int[] {x, y});
                     } else {
+                        if (board.getFigure(x, y).getSide() != board.getFigure(move[0], move[1]).getSide()) {
+                            allowedMovements.add(new int[] {x, y});
+                        }
                         break;
                     }
                 }
