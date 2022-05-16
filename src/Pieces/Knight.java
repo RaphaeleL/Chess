@@ -22,7 +22,7 @@ public class Knight extends Piece {
             x = move[0] - allowedKey[0];
             y = move[1] - allowedKey[1];
             if (movementUtil.inBounds(x, y)) {
-                if (!movementUtil.isFree(board, x, y, side)) {
+                if (!movementUtil.isFree(board, x, y, side, board.getFigure(move[0], move[1]))) {
                     allowedMovements.add(new int[] { x, y});
                 }
             }

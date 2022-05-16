@@ -26,7 +26,7 @@ public class Pawn extends Piece {
             y = side ? move[1] - allowedKey[1] : move[1] + allowedKey[1];
             if (movementUtil.inBounds(x, y)) {
                 if (move[1] != y) {
-                    if (!movementUtil.isFree(board, x, y, side)) {
+                    if (!movementUtil.isFree(board, x, y, side, board.getFigure(move[0], move[1]))) {
                         allowedMovements.add(new int[] {x, y});
                     }
                 } else {

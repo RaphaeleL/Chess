@@ -23,17 +23,17 @@ public class Movement {
         return false;
     }
 
-    public boolean isFree(Board board, int x, int y, boolean mySide) {
-        // not empty but my figure
-        if ((!board.getFigure(x, y).getClass().isInstance(new Empty())) && (board.getFigure(x, y).getSide() == mySide)) {
-            return false;
-        }
-        // not empty not my figure
-        if ((!board.getFigure(x, y).getClass().isInstance(new Empty())) && (board.getFigure(x, y).getSide() != mySide)) {
+    public boolean isFree(Board board, int x, int y, boolean mySide, Piece fromPiece) {
+        // 1. field is empty -> true
+        if (board.getFigure(x, y).getClass().isInstance(new Empty())) {
             return true;
         }
-        // empty
-        if (board.getFigure(x, y).getClass().isInstance(new Empty())) {
+        // 2. field is not empty, blocked with his figure -> true
+        if (fromPiece.getSide() != board.getFigure(x, y).getSide()) {
+            return false;
+        }
+        // 3. field is not empty, blocked with my figure -> false
+        if (fromPiece.getSide() == board.getFigure(x, y).getSide()) {
             return true;
         }
         return false;

@@ -2,7 +2,7 @@ package Board;
 import Pieces.*;
 
 public class Board {
-    private Piece board[][] = new Piece[8][8];
+    private final Piece[][] board = new Piece[8][8];
     private boolean winner = false;
     private boolean currentSide = true;
 
@@ -83,7 +83,7 @@ public class Board {
 
     public void printBoard() {
         System.out.println("Black");
-        for (Piece x[] : this.board) {
+        for (Piece[] x : this.board) {
             for (Piece y : x) {
                 System.out.print(y.getRepresentation() + "  ");
             }
