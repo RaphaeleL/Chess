@@ -119,4 +119,6 @@ BLACK [From|To] >
 - en-passant 
 - Flip Board 
 - Fen
+- Optimization
+   - Figures just need side, the rest is calc able
 
