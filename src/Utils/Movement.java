@@ -54,7 +54,8 @@ public class Movement {
     }
 
     public boolean chooseColor() {
-        System.out.println("Hint: JChess is still in development, so currently the \n board does not rotate with the choice of color.\n");
+        System.out.println("Hint: JChess is still in development, so currently the \n " +
+                "board does not rotate with the choice of color.\n");
         System.out.print("Which color? (W/b) > ");
         String playerInput = scanner.next();
         System.out.println("==========================================================");
