@@ -12,7 +12,6 @@ public class Pawn extends Piece {
 
     @Override
     public boolean checkMove(Board board, int [] move, boolean side) {
-        // TODO: en passent
         Movement movementUtil = new Movement();
         List<int[]> allowedMovements = new ArrayList<>();
         int[][] allowedKeys = {{1, 0}, {1, 1}, {1, -1}};
@@ -34,6 +33,10 @@ public class Pawn extends Piece {
                 }
             }
         }
+        // TODO: en passent
+        // 1. pawn made 2 steps
+        // 2. pawn stands next to another pawn
+        // 3. the enemy pawn makes a step behind the pawn and eats him
         return movementUtil.isAllowed(allowedMovements, move);
     }
 

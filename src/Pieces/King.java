@@ -14,7 +14,6 @@ public class King extends Piece {
 
     @Override
     public boolean checkMove(Board board, int[] move, boolean side) {
-        // TODO castling
         Movement movementUtil = new Movement();
         List<int[]> allowedMovements = new ArrayList<>();
         int[][] allowedKeys = {{1, 1}, {1, -1}, {-1, 1}, {-1, -1}, {1, 0}, {-1, 0}, {0, -1}, {0, 1}};
@@ -28,6 +27,11 @@ public class King extends Piece {
                 }
             }
         }
+        // TODO castling: d8d6
+        // 1. rook never moved
+        // 2. king never moved
+        // 3. after castling there is no instant check
+        // 4. no figures between king and rook
         return movementUtil.isAllowed(allowedMovements, move);
     }
 
