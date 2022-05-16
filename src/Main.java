@@ -3,8 +3,10 @@ import Utils.*;
 
 public class Main {
     public static void main(String[] args) {
-        Board board = new Board();
         Movement movement = new Movement();
+        movement.dearScreen();
+
+        Board board = new Board();
 
         while (!board.isWinner()) {
             movement.move(board);

@@ -82,13 +82,23 @@ public class Board {
     }
 
     public void printBoard() {
-        System.out.println("Black");
+        System.out.println("+-------------+");
+        System.out.println("| Black       |");
+        System.out.println("+-------------+");
+        System.out.println("a1                              h1");
+        System.out.println("   +--------------------------+");
         for (Piece[] x : this.board) {
+            System.out.print("   |  ");
             for (Piece y : x) {
                 System.out.print(y.getRepresentation() + "  ");
             }
+            System.out.print("| ");
             System.out.println();
         }
-        System.out.println("White\n");
+        System.out.println("   +--------------------------+");
+        System.out.println("a8                              h8");
+        System.out.println("\t\t\t\t\t+-------------+");
+        System.out.println("\t\t\t\t\t| White       |");
+        System.out.println("\t\t\t\t\t+-------------+");
     }
 }

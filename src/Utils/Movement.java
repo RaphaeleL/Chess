@@ -23,6 +23,20 @@ public class Movement {
         return false;
     }
 
+    public void dearScreen() {
+        String banner3 = "      ##  ######  ##     ## ########  ######   ######  \n" +
+                "      ## ##    ## ##     ## ##       ##    ## ##    ## \n" +
+                "      ## ##       ##     ## ##       ##       ##       \n" +
+                "      ## ##       ######### ######    ######   ######  \n" +
+                "##    ## ##       ##     ## ##             ##       ## \n" +
+                "##    ## ##    ## ##     ## ##       ##    ## ##    ## \n" +
+                " ######   ######  ##     ## ########  ######   ###### ";
+
+        System.out.println(banner3);
+        System.out.println("==========================================================");
+        System.out.println("==========================================================");
+    }
+
     public boolean isFree(Board board, int x, int y, boolean mySide, Piece fromPiece) {
         // 1. field is empty -> true
         if (board.getFigure(x, y).getClass().isInstance(new Empty())) {
