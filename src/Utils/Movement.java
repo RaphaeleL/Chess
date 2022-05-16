@@ -48,10 +48,8 @@ public class Movement {
         }
         // 3. field is not empty, blocked with my figure -> false
         if (fromPiece.getSide() == board.getFigure(x, y).getSide()) {
-            System.out.println("case 3");
             return true;
         }
-        System.out.print("case 4");
         return false;
     }
 

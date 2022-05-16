@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f05f5bc6-fcce-4039-ae35-b4adeb6e05ee" name="Changes" comment="Update README.md">
+    <list default="true" id="f05f5bc6-fcce-4039-ae35-b4adeb6e05ee" name="Changes" comment="Detecting Winner">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pieces/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pieces/King.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utils/Movement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Movement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,6 +87,7 @@
       <workItem from="1652677799069" duration="1991000" />
       <workItem from="1652680892141" duration="14862000" />
       <workItem from="1652704657967" duration="19000" />
+      <workItem from="1652706372125" duration="188000" />
     </task>
     <task id="LOCAL-00001" summary="Basic Board and Movement implementation">
       <created>1652440528544</created>
@@ -223,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652704563218</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Detecting Winner">
+      <created>1652705677650</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1652705677650</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,6 +265,7 @@
     <MESSAGE value="todo's" />
     <MESSAGE value="Choose start color (without board flip)" />
     <MESSAGE value="Update README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update README.md" />
+    <MESSAGE value="Detecting Winner" />
+    <option name="LAST_COMMIT_MESSAGE" value="Detecting Winner" />
   </component>
 </project>
