@@ -69,18 +69,17 @@ public class Bishop extends Piece {
         List<int[]> allowedMovements = new ArrayList<>();
         int x, y;
 
-        List<List<int[]>> foo = new ArrayList<>(4);
-        foo.add(0, getAllBishopMovesA(move));
-        foo.add(1, getAllBishopMovesB(move));
-        foo.add(2, getAllBishopMovesC(move));
-        foo.add(3, getAllBishopMovesD(move));
+        List<List<int[]>> allMovements = new ArrayList<>(4);
+        allMovements.add(0, getAllBishopMovesA(move));
+        allMovements.add(1, getAllBishopMovesB(move));
+        allMovements.add(2, getAllBishopMovesC(move));
+        allMovements.add(3, getAllBishopMovesD(move));
 
-        for (List<int[]> ints : foo) {
+        for (List<int[]> ints : allMovements) {
             for (int[] movement : ints) {
                 x = movement[0];
                 y = movement[1];
                 if (movementUtil.inBounds(x, y)) {
-                    System.out.println("(" + x + "," + y + ") " + board.getFigure(x, y).getClass());
                     if (board.getFigure(x, y).getClass().isInstance(new Empty())) {
                         allowedMovements.add(new int[] {x, y});
                     } else {

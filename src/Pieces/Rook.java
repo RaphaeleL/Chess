@@ -62,18 +62,17 @@ public class Rook extends Piece {
         List<int[]> allowedMovements = new ArrayList<>();
         int x, y;
 
-        List<List<int[]>> foo = new ArrayList<>(4);
-        foo.add(0, getAllRookMovesA(move));
-        foo.add(1, getAllRookMovesB(move));
-        foo.add(2, getAllRookMovesC(move));
-        foo.add(3, getAllRookMovesD(move));
+        List<List<int[]>> allMovements = new ArrayList<>(4);
+        allMovements.add(0, getAllRookMovesA(move));
+        allMovements.add(1, getAllRookMovesB(move));
+        allMovements.add(2, getAllRookMovesC(move));
+        allMovements.add(3, getAllRookMovesD(move));
 
-        for (List<int[]> ints : foo) {
+        for (List<int[]> ints : allMovements) {
             for (int[] movement : ints) {
                 x = movement[0];
                 y = movement[1];
                 if (movementUtil.inBounds(x, y)) {
-                    System.out.println("(" + x + "," + y + ") " + board.getFigure(x, y).getClass());
                     if (board.getFigure(x, y).getClass().isInstance(new Empty())) {
                         allowedMovements.add(new int[] {x, y});
                     } else {
