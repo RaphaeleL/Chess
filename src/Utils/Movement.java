@@ -44,13 +44,29 @@ public class Movement {
         }
         // 2. field is not empty, blocked with his figure -> true
         if (fromPiece.getSide() != board.getFigure(x, y).getSide()) {
+            if (board.isCurrentSide() == board.getFigure(x, y).getSide()) {
+                board.addDeadWhite(fromPiece);
+            } else if (board.isCurrentSide() != board.getFigure(x, y).getSide()) {
+                board.addDeadBlack(fromPiece);
+            }
             return false;
         }
         // 3. field is not empty, blocked with my figure -> false
         if (fromPiece.getSide() == board.getFigure(x, y).getSide()) {
+            System.out.println("case 3");
             return true;
         }
+        System.out.print("case 4");
         return false;
+    }
+
+    public boolean chooseColor() {
+        System.out.println("Hint: JChess is still in development, so currently the \n board does not rotate with the choice of color.\n");
+        System.out.print("Which color? (W/b) > ");
+        String playerInput = scanner.next();
+        System.out.println("==========================================================");
+        System.out.println("==========================================================");
+        return playerInput.toLowerCase().equalsIgnoreCase("w");
     }
 
     public boolean inBounds(int x, int y) {
@@ -89,7 +105,6 @@ public class Movement {
         System.out.println();
         return playerInput;
     }
-
 
     public void move(Board board) {
         String playerInput = this.getInput(board);

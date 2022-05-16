@@ -6,7 +6,7 @@ public class Main {
         Movement movement = new Movement();
         movement.dearScreen();
 
-        Board board = new Board();
+        Board board = new Board(movement.chooseColor());
 
         while (!board.isWinner()) {
             movement.move(board);
