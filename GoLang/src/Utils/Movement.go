@@ -1,17 +1,16 @@
 package Utils
 
 import (
+	B "../Board"
 	"bufio"
 	"fmt"
 	"os"
-	"strconv"
 	"strings"
 )
-import B "../Board"
 
 type Movement struct{}
 
-func (Movement) DearScreen() {
+func DearScreen() {
 	fmt.Println(" ######              ######  ##     ## ########  ######   ######	")
 	fmt.Println("##    ##            ##    ## ##     ## ##       ##    ## ##    ##")
 	fmt.Println("##          #####   ##       ##     ## ##       ##       ##		  ")
@@ -23,7 +22,7 @@ func (Movement) DearScreen() {
 	fmt.Println("=================================================================")
 }
 
-func (Movement) ChooseColor() bool {
+func ChooseColor() bool {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Println("Hint: JChess is still in development, so currently the \n " +
 		"board does not rotate with the choice of color.")
@@ -34,15 +33,16 @@ func (Movement) ChooseColor() bool {
 	return strings.Compare("w", strings.ToLower(playerInput)) == 0
 }
 
-func (Movement) Move(board B.Board) {
-	playerInput := getPlayerInput(board)
+func Move(board [8][8]string, side bool) [8][8]string {
+	playerInput := getPlayerInput(side)
 	movement := prepare(playerInput)
-	board.PrintBoard(board.SetField(movement, board))
+	newBoard := B.SetField(board, movement)
+	return newBoard
 }
 
-func getPlayerInput(board B.Board) string {
+func getPlayerInput(side bool) string {
 	reader := bufio.NewReader(os.Stdin)
-	if board.CurrentSide {
+	if side {
 		fmt.Print("\nWHITE [From,To] > ")
 	} else {
 		fmt.Print("\nBLACK [From,To] > ")
@@ -55,8 +55,8 @@ func getPlayerInput(board B.Board) string {
 func prepare(movement string) []int {
 	move := strings.Split(movement, "")
 	var x1, x2, y1, y2 int
-	x1 = letterToNumer(move[0]) - 1
-	x2 = letterToNumer(move[2]) - 1
+	x1 = letterToNumer(move[0])
+	x2 = letterToNumer(move[2])
 	fmt.Sscanf(move[1], "%d", &y1)
 	fmt.Sscanf(move[3], "%d", &y2)
 	y1 -= 1
@@ -64,8 +64,16 @@ func prepare(movement string) []int {
 	return []int{x1, y1, x2, y2}
 }
 
+func indexOf(letter string, data []string) int {
+	for index := range data {
+		if data[index] == letter {
+			return index
+		}
+	}
+	return -1
+}
+
 func letterToNumer(letter string) int {
-	var number int
-	number, _ = strconv.Atoi(letter)
-	return number + 1
+	letters := []string{"a", "b", "c", "d", "e", "f", "g", "h"}
+	return indexOf(letter, letters)
 }

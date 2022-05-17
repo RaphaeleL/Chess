@@ -1,21 +1,20 @@
 package main
 
-import B "./Board"
-import M "./Utils"
+import (
+	B "./Board"
+	M "./Utils"
+)
 
 func main() {
-	b := B.Board{}
-	m := M.Movement{}
-	m.DearScreen()
-	x := b.FillBoard(false, m.ChooseColor())
-	b.PrintBoard(x)
-
-	for !b.Winner {
-		m.Move(x)
-		b.CurrentSide = !b.CurrentSide
-		b.CheckWinner()
+	M.DearScreen()
+	side := M.ChooseColor()
+	board := B.FillBoard()
+	B.PrintBoard(board)
+	for B.HasWinner() {
+		board = M.Move(board, side)
+		B.PrintBoard(board)
+		side = !side
+		B.CheckWinner()
 	}
-
-	b.HandleWinner()
-
+	B.HandleWinner()
 }
