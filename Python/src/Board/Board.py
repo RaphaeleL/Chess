@@ -87,8 +87,22 @@ class Board():
         self.board[7].append(Rook(False, 5, "r"))
 
     def printBoard(self):
+
+        print("+-------------+")
+        print("| Black       |")
+        print("+-------------+")
+        print("\na1                     h1")
+        print("   +-----------------+")
         for tmp in self.board:
+            print("   | ", end="")
             for piece in tmp:
                 print(str(piece) + " ", end="")
+            print("| ", end="")
             print()
-            
+        print("   +-----------------+")
+        print("a8                     h8\n")
+        print("\t\t\t+-------------+")
+        print("\t\t\t| White       |")
+        print("\t\t\t+-------------+\n")
+
+
