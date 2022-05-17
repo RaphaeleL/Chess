@@ -6,7 +6,7 @@ if __name__ == "__main__":
     movement = Movement()
     movement.dearScreen()
 
-    board = Board(True)
+    board = Board(movement.chooseColor())
 
     while not board.isWinner():
         movement.move(board)
