@@ -1,4 +1,5 @@
-from Pieces.Piece import Piece
+from Pieces.Piece import Piece, Empty
+from Utils.Movement import Movement
 
 class King(Piece):
     def __init__(self, side, value, representation):
@@ -10,4 +11,13 @@ class King(Piece):
         return self.representation
 
     def checkMove(self, board, move, side):
-        return True
+        movementUtil = Movement()
+        allowedMovements = []
+        allowedKeys = [[1, 1], [1, -1], [-1, 1], [-1, -1], [1, 0], [-1, 0], [0, -1], [0, 1]]
+        for allowedKey in allowedKeys:
+            x = move[0] - allowedKey[0]
+            y = move[1] - allowedKey[1]
+            if movementUtil.inBounds(x, y):
+                if movementUtil.isFree(board, x, y, side, board.getFigure(move[0], move[1])):
+                    allowedMovements.append([x, y])
+        return movementUtil.isAllowed(allowedMovements, move)
