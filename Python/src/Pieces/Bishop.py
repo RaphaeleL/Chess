@@ -15,6 +15,7 @@ class Bishop(Piece):
         allMovements = []
         while (movement.inBounds(move[0], move[1])):
             move[0] -= 1 
+            move[1] -= 1 
             if not [move[0], move[1]] in allMovements: 
                 allMovements.append([move[0], move[1]])
         return allMovements
@@ -24,6 +25,7 @@ class Bishop(Piece):
         allMovements = []
         while (movement.inBounds(move[0], move[1])):
             move[0] += 1 
+            move[1] += 1 
             if not [move[0], move[1]] in allMovements: 
                 allMovements.append([move[0], move[1]])
         return allMovements
@@ -32,6 +34,7 @@ class Bishop(Piece):
         movement = Movement()
         allMovements = []
         while (movement.inBounds(move[0], move[1])):
+            move[0] += 1 
             move[1] -= 1 
             if not [move[0], move[1]] in allMovements: 
                 allMovements.append([move[0], move[1]])
@@ -41,6 +44,7 @@ class Bishop(Piece):
         movement = Movement()
         allMovements = []
         while (movement.inBounds(move[0], move[1])):
+            move[0] -= 1 
             move[1] += 1 
             if not [move[0], move[1]] in allMovements: 
                 allMovements.append([move[0], move[1]])
@@ -56,6 +60,7 @@ class Bishop(Piece):
                 x = movement[0]
                 y = movement[1]
                 if movementUtil.inBounds(x, y): 
+                    board.setFigure(x, y, Empty("-"))
                     if type(board.getFigure(x, y)) is Empty("o").__class__:
                         if movementUtil.isFree(board, x, y, side, board.getFigure(move[0], move[1])):
                             allowedMovements.append([x, y])

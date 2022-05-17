@@ -12,6 +12,7 @@ class Queen(Piece):
         allMovements = []
         while (movement.inBounds(move[0], move[1])):
             move[0] -= 1 
+            move[1] -= 1 
             if not [move[0], move[1]] in allMovements: 
                 allMovements.append([move[0], move[1]])
         return allMovements
@@ -21,6 +22,7 @@ class Queen(Piece):
         allMovements = []
         while (movement.inBounds(move[0], move[1])):
             move[0] += 1 
+            move[1] += 1 
             if not [move[0], move[1]] in allMovements: 
                 allMovements.append([move[0], move[1]])
         return allMovements
@@ -29,6 +31,7 @@ class Queen(Piece):
         movement = Movement()
         allMovements = []
         while (movement.inBounds(move[0], move[1])):
+            move[0] += 1 
             move[1] -= 1 
             if not [move[0], move[1]] in allMovements: 
                 allMovements.append([move[0], move[1]])
@@ -38,6 +41,7 @@ class Queen(Piece):
         movement = Movement()
         allMovements = []
         while (movement.inBounds(move[0], move[1])):
+            move[0] -= 1 
             move[1] += 1 
             if not [move[0], move[1]] in allMovements: 
                 allMovements.append([move[0], move[1]])
@@ -89,6 +93,7 @@ class Queen(Piece):
             self.getAllRookMovesC(move), self.getAllRookMovesD(move), 
             self.getAllBishopMovesA(move), self.getAllBishopMovesB(move), 
             self.getAllBishopMovesC(move), self.getAllBishopMovesD(move)]
+        print(allMovements)
         for ints in allMovements: 
             for movement in ints: 
                 x = movement[0]

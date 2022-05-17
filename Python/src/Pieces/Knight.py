@@ -18,6 +18,13 @@ class Knight(Piece):
             x = move[0] - allowedKey[0]
             y = move[1] - allowedKey[1]
             if movementUtil.inBounds(x, y):
-                if movementUtil.isFree(board, x, y, side, board.getFigure(move[0], move[1])):
-                    allowedMovements.append([x, y])
+                print(type(board.getFigure(x, y)), Empty("o").__class__, type(board.getFigure(x, y)) is Empty("o").__class__)
+                
+                if type(board.getFigure(x, y)) is Empty("o").__class__:
+                    if movementUtil.isFree(board, x, y, side, board.getFigure(move[0], move[1])):
+                        allowedMovements.append([x, y])
+                else: 
+                    if board.getFigure(x, y).side != board.getFigure(move[0], move[1]).side: 
+                        allowedMovements.append([x, y])
+                    break
         return movementUtil.isAllowed(allowedMovements, move)
