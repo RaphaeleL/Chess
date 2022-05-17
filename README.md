@@ -5,7 +5,7 @@ Just a Terminal Chess in different Programming Languages
 ## Languages 
 
 - [x] Java
-- [ ] Python
+- [x] Python
 - [ ] GoLang
 - [ ] C++
 - [ ] Rust 
