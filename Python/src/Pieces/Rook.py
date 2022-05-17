@@ -11,56 +11,65 @@ class Rook(Piece):
         return self.representation
 
     def getAllRookMovesA(self, move): 
-        movement = Movement()
+        movementUtil = Movement()
         allMovements = []
-        while (movement.inBounds(move[0], move[1])):
-            move[0] -= 1 
-            if not [move[0], move[1]] in allMovements: 
-                allMovements.append([move[0], move[1]])
+        x = move[0]
+        y = move[1]
+        while (movementUtil.inBounds(x, y)):
+            x -= 1 
+            if not [[x, y]] in allMovements: 
+                allMovements.append([x, y])
         return allMovements
 
     def getAllRookMovesB(self, move): 
-        movement = Movement()
+        movementUtil = Movement()
         allMovements = []
-        while (movement.inBounds(move[0], move[1])):
-            move[0] += 1 
-            if not [move[0], move[1]] in allMovements: 
-                allMovements.append([move[0], move[1]])
+        x = move[0]
+        y = move[1]
+        while (movementUtil.inBounds(x, y)):
+            x += 1 
+            if not [[x, y]] in allMovements: 
+                allMovements.append([x, y])
         return allMovements
 
     def getAllRookMovesC(self, move): 
-        movement = Movement()
+        movementUtil = Movement()
         allMovements = []
-        while (movement.inBounds(move[0], move[1])):
-            move[1] -= 1 
-            if not [move[0], move[1]] in allMovements: 
-                allMovements.append([move[0], move[1]])
+        x = move[0]
+        y = move[1]
+        while (movementUtil.inBounds(x, y)):
+            y -= 1 
+            if not [[x, y]] in allMovements: 
+                allMovements.append([x, y])
         return allMovements
 
     def getAllRookMovesD(self, move): 
-        movement = Movement()
+        movementUtil = Movement()
         allMovements = []
-        while (movement.inBounds(move[0], move[1])):
-            move[1] += 1 
-            if not [move[0], move[1]] in allMovements: 
-                allMovements.append([move[0], move[1]])
+        x = move[0]
+        y = move[1]
+        while (movementUtil.inBounds(x, y)):
+            y += 1 
+            if not [[x, y]] in allMovements: 
+                allMovements.append([x, y])
         return allMovements
 
     def checkMove(self, board, move, side):
         movementUtil = Movement()
         allowedMovements = []
-        allMovements = [self.getAllRookMovesA(move), self.getAllRookMovesB(move), 
-            self.getAllRookMovesC(move), self.getAllRookMovesD(move)]
-        for ints in allMovements: 
-            for movement in ints: 
-                x = movement[0]
-                y = movement[1]
-                if movementUtil.inBounds(x, y): 
-                    if type(board.getFigure(x, y)) is Empty("o").__class__:
-                        if movementUtil.isFree(board, x, y, side, board.getFigure(move[0], move[1])):
-                            allowedMovements.append([x, y])
-                    else: 
-                        if board.getFigure(x, y).side != board.getFigure(move[0], move[1]).side: 
-                            allowedMovements.append([x, y])
-                        break
+        allMovements = []
+        allMovements.extend(self.getAllRookMovesA(move))
+        allMovements.extend(self.getAllRookMovesB(move))
+        allMovements.extend(self.getAllRookMovesC(move))
+        allMovements.extend(self.getAllRookMovesD(move))
+        for movement in allMovements: 
+            x = movement[0]
+            y = movement[1]
+            if movementUtil.inBounds(x, y): 
+                if type(board.getFigure(x, y)) is Empty().__class__:
+                    if movementUtil.isFree(board, x, y, side, board.getFigure(move[0], move[1])):
+                        allowedMovements.append([x, y])
+                else: 
+                    if board.getFigure(x, y).side != board.getFigure(move[0], move[1]).side: 
+                        allowedMovements.append([x, y])
         return movementUtil.isAllowed(allowedMovements, move)

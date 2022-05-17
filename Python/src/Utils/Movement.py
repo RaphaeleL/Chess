@@ -22,7 +22,8 @@ class Movement():
         print("=================================================================")
 
     def isFree(self, board, x, y, mySide, fromPiece):
-        if type(board.getFigure(x, y)) is Empty("o").__class__:
+        #if isinstance(board.getFigure(x,y).__class__, type(Empty())):
+        if type(board.getFigure(x, y)) is Empty().__class__:
             return True
         if fromPiece.side != board.getFigure(x, y).side:
             return False

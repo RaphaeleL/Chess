@@ -36,7 +36,7 @@ class Board():
         blackCount, whiteCount = 0, 0
         for tmp in self.board:
             for piece in tmp:
-                if not type(piece) is Empty("o").__class__:
+                if not type(piece) is Empty().__class__:
                     if piece.side:
                         whiteCount += 1
                     else:
@@ -57,7 +57,7 @@ class Board():
     def setField(self, move):
         toMove = self.getFigure(move[1], move[0])
         if toMove.checkMove(self, [move[1], move[0], move[3], move[2]], self.currentSide):
-            self.setFigure(move[1], move[0], Empty("o"))
+            self.setFigure(move[1], move[0], Empty())
             self.setFigure(move[3], move[2], toMove)
         else:
             print("Move is not allowed. Try again!".upper())
@@ -75,7 +75,7 @@ class Board():
         for _ in range(8):
             self.board[1].append(Pawn(True, 1, "P"))
             for i in range(2, 6):
-                self.board[i].append(Empty("o"))
+                self.board[i].append(Empty())
             self.board[6].append(Pawn(False, 1, "p"))
         self.board[7].append(Rook(False, 5, "r"))
         self.board[7].append(Knight(False, 3, "k"))

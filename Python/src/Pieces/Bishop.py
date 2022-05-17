@@ -11,61 +11,69 @@ class Bishop(Piece):
         return self.representation
 
     def getAllBishopMovesA(self, move): 
-        movement = Movement()
+        movementUtil = Movement()
         allMovements = []
-        while (movement.inBounds(move[0], move[1])):
-            move[0] -= 1 
-            move[1] -= 1 
-            if not [move[0], move[1]] in allMovements: 
-                allMovements.append([move[0], move[1]])
+        x = move[0]
+        y = move[1]
+        while (movementUtil.inBounds(x, y)):
+            x += 1
+            y += 1 
+            if not [[x, y]] in allMovements: 
+                allMovements.append([x, y])
         return allMovements
 
     def getAllBishopMovesB(self, move): 
-        movement = Movement()
+        movementUtil = Movement()
         allMovements = []
-        while (movement.inBounds(move[0], move[1])):
-            move[0] += 1 
-            move[1] += 1 
-            if not [move[0], move[1]] in allMovements: 
-                allMovements.append([move[0], move[1]])
+        x = move[0]
+        y = move[1]
+        while (movementUtil.inBounds(x, y)):
+            x -= 1
+            y -= 1 
+            if not [[x, y]] in allMovements: 
+                allMovements.append([x, y])
         return allMovements
 
     def getAllBishopMovesC(self, move): 
-        movement = Movement()
+        movementUtil = Movement()
         allMovements = []
-        while (movement.inBounds(move[0], move[1])):
-            move[0] += 1 
-            move[1] -= 1 
-            if not [move[0], move[1]] in allMovements: 
-                allMovements.append([move[0], move[1]])
+        x = move[0]
+        y = move[1]
+        while (movementUtil.inBounds(x, y)):
+            x += 1
+            y -= 1 
+            if not [[x, y]] in allMovements: 
+                allMovements.append([x, y])
         return allMovements
 
     def getAllBishopMovesD(self, move): 
-        movement = Movement()
+        movementUtil = Movement()
         allMovements = []
-        while (movement.inBounds(move[0], move[1])):
-            move[0] -= 1 
-            move[1] += 1 
-            if not [move[0], move[1]] in allMovements: 
-                allMovements.append([move[0], move[1]])
+        x = move[0]
+        y = move[1]
+        while (movementUtil.inBounds(x, y)):
+            x -= 1
+            y += 1 
+            if not [[x, y]] in allMovements: 
+                allMovements.append([x, y])
         return allMovements
 
     def checkMove(self, board, move, side):
         movementUtil = Movement()
         allowedMovements = []
-        allMovements = [self.getAllBishopMovesA(move), self.getAllBishopMovesB(move), 
-            self.getAllBishopMovesC(move), self.getAllBishopMovesD(move)]
-        for ints in allMovements: 
-            for movement in ints: 
-                x = movement[0]
-                y = movement[1]
-                if movementUtil.inBounds(x, y): 
-                    board.setFigure(x, y, Empty("-"))
-                    if type(board.getFigure(x, y)) is Empty("o").__class__:
-                        if movementUtil.isFree(board, x, y, side, board.getFigure(move[0], move[1])):
-                            allowedMovements.append([x, y])
-                    else: 
-                        if board.getFigure(x, y).side != board.getFigure(move[0], move[1]).side: 
-                            allowedMovements.append([x, y])
-                        break
+        allMovements = []
+        allMovements.extend(self.getAllBishopMovesA(move))
+        allMovements.extend(self.getAllBishopMovesB(move))
+        allMovements.extend(self.getAllBishopMovesC(move))
+        allMovements.extend(self.getAllBishopMovesD(move))
+        for movement in allMovements:
+            x = movement[0]
+            y = movement[1]
+            if movementUtil.inBounds(x, y):
+                if board.getFigure(x, y) is Empty():
+                    if movementUtil.isFree(board, x, y, side, board.getFigure(move[0], move[1])):
+                        allowedMovements.append([x, y])
+                else: 
+                    if board.getFigure(x, y).side != board.getFigure(move[0], move[1]).side: 
+                        allowedMovements.append([x, y])
         return movementUtil.isAllowed(allowedMovements, move)
