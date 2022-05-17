@@ -1,6 +1,8 @@
 class Piece(): 
-    def __init__(self):
-        pass
+    def __init__(self, side, value, representation):
+        self.side = side
+        self.value = value
+        self.representation = representation
 
 class Empty(): 
     def __init__(self, representation):
@@ -8,3 +10,6 @@ class Empty():
     
     def __str__(self): 
         return self.representation
+
+    def checkMove(self, board, move, side):
+        return False

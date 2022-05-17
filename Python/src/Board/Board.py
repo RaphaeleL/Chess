@@ -9,10 +9,52 @@ from Pieces.Rook import Rook
 
 class Board():
     def __init__(self, color):
-        self.currentColor = color
+        self.currentSide = color
+        self.winner = False
+        self.winnerSide = None
         self.board = [[], [], [], [], [], [], [], []]
         self.fillBoard()
         self.printBoard()
+
+    def isWinner(self):
+        return self.winner
+
+    def setWinner(self, winner):
+        self.winner = winner
+
+    def handleWinner(self):
+        if self.winnerSide:
+            print("White won")
+        elif not self.winnerSide:
+            print("Black won")
+
+    def checkWinner(self):
+        blackCount, whiteCount = 0
+        for tmp in self.board:
+            for piece in tmp:
+                if not isinstance(piece, Empty()):
+                    if piece.side:
+                        whiteCount += 1
+                    else:
+                        blackCount += 1
+        if blackCount == 0:
+            self.setWinner(True)
+            self.winnerSide = False
+        elif whiteCount == 0:
+            self.setWinner(False)
+            self.winnerSide = True
+
+    def setFigure(self, x, y, figure):
+        self.board[x][y] = figure
+
+    def getFigure(self, x, y):
+        return self.board[x][y]
+
+    def setField(self, move):
+        toMove = self.getFigure(move[0], move[1])
+        if toMove.checkMove(self, move, self.currentSide):
+            pass
+
 
     def fillBoard(self):
         self.board[0].append(Rook(True, 5, "R"))
