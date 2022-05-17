@@ -8,3 +8,6 @@ class Queen(Piece):
     
     def __str__(self): 
         return self.representation
+
+    def checkMove(self, board, move, side):
+        return True

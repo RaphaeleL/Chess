@@ -23,16 +23,20 @@ class Board():
         self.winner = winner
 
     def handleWinner(self):
+        print("==========================================================")
+        print("==========================================================")
         if self.winnerSide:
             print("White won")
         elif not self.winnerSide:
             print("Black won")
+        print("==========================================================")
+        print("==========================================================")
 
     def checkWinner(self):
-        blackCount, whiteCount = 0
+        blackCount, whiteCount = 0, 0
         for tmp in self.board:
             for piece in tmp:
-                if not isinstance(piece, Empty()):
+                if not type(piece) is Empty("o").__class__:
                     if piece.side:
                         whiteCount += 1
                     else:
@@ -51,10 +55,13 @@ class Board():
         return self.board[x][y]
 
     def setField(self, move):
-        toMove = self.getFigure(move[0], move[1])
+        toMove = self.getFigure(move[1], move[0])
         if toMove.checkMove(self, move, self.currentSide):
-            pass
-
+            self.setFigure(move[1], move[0], Empty("o"))
+            self.setFigure(move[3], move[2], toMove)
+        else:
+            print("Move is not allowed. Try again!".upper())
+            self.currentSide = not self.currentSide
 
     def fillBoard(self):
         self.board[0].append(Rook(True, 5, "R"))

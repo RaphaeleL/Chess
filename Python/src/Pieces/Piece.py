@@ -12,4 +12,4 @@ class Empty():
         return self.representation
 
     def checkMove(self, board, move, side):
-        return False
+        return True
