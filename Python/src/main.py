@@ -1,6 +1,6 @@
 from Pieces.Pawn import Pawn
 from Board.Board import Board
-from Utils.Movement import  Movement
+from Utils.Movement import Movement
 
 if __name__ == "__main__":
     movement = Movement()

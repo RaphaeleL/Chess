@@ -17,7 +17,7 @@ class Movement():
         print("==========================================================")
 
     def isFree(self, board, x, y, mySide, fromPiece):
-        if type(board.getFigure(x, y)) is Empty().__class__:
+        if type(board.getFigure(x, y)) is Empty("o").__class__:
             return True
         if fromPiece.side != board.getFigure(x, y).side:
             return False
@@ -39,7 +39,12 @@ class Movement():
 
     def prepare(self, movement):
         move = [letter for letter in movement]
-        return [self.letterToNumber(move[0])-1, int(move[1])-1, self.letterToNumber(move[2])-1, int(move[3])-1]
+        return [
+            self.letterToNumber(move[0]) - 1, 
+            int(move[1]) - 1, 
+            self.letterToNumber(move[2]) - 1, 
+            int(move[3]) - 1
+            ]
 
     def letterToNumber(self, letter):
         return ord(letter) - 96

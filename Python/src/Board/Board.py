@@ -56,7 +56,7 @@ class Board():
 
     def setField(self, move):
         toMove = self.getFigure(move[1], move[0])
-        if toMove.checkMove(self, move, self.currentSide):
+        if toMove.checkMove(self, [move[1], move[0], move[3], move[2]], self.currentSide):
             self.setFigure(move[1], move[0], Empty("o"))
             self.setFigure(move[3], move[2], toMove)
         else:
@@ -89,6 +89,6 @@ class Board():
     def printBoard(self):
         for tmp in self.board:
             for piece in tmp:
-                print(str(piece) + "\t", end="")
+                print(str(piece) + " ", end="")
             print()
             
