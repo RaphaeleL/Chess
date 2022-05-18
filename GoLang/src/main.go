@@ -1,8 +1,8 @@
 package main
 
 import (
-	B "./Board"
-	M "./Utils"
+  B "src/Board"
+	M "src/Utils"
 )
 
 func main() {
@@ -13,7 +13,9 @@ func main() {
 	for B.HasWinner() {
 		board = M.Move(board, side)
 		B.PrintBoard(board)
-		side = !side
+		if B.Success {
+			side = !side
+		}
 		B.CheckWinner()
 	}
 	B.HandleWinner()

@@ -1,14 +1,12 @@
 package Utils
 
 import (
-	B "../Board"
+	B "src/Board"
 	"bufio"
 	"fmt"
 	"os"
 	"strings"
 )
-
-type Movement struct{}
 
 func DearScreen() {
 	fmt.Println(" ######              ######  ##     ## ########  ######   ######	")
