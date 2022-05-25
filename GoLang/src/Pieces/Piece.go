@@ -30,21 +30,16 @@ func checkDuplicate(allowedMovements [][]int, x int, y int) bool {
   return false 
 }
 
-func me(fx int, fy int, tx int, ty int) bool {
-  if fx != tx && fy != ty {
-    return true
-  } 
-  return false
-}
+func checkKeyList(side bool, board [8][8]string, move []int, allowedKeys [][]int) [][]int {
+  // TODO at the moment the own pieces of black are also marked als moveable
+  // TODO for white the same, but not always
 
-func pawnMovements(side bool, board [8][8]string, move []int) {
   // get baseline 
   baseline := 1
   if !side {
     baseline = 6
 	}
   // get allowed steps and init allowed movements with helpfull counter
-  allowedKeys := [][]int{{1, 0}, {1, 1}, {1, -1}}
   allowedMovements := make([][]int, cap(allowedKeys)*2+2)
   counter := 0
   // iterate the allowed steps / keys
@@ -72,7 +67,11 @@ func pawnMovements(side bool, board [8][8]string, move []int) {
     // helpfull stuff 
     counter += 1 
   }
-  // temp. fill the board  
+  printTmpBoard(allowedMovements, board)
+  return allowedMovements
+}
+
+func printTmpBoard(allowedMovements [][]int, board [8][8]string) {
   for index := 0; index < len(allowedMovements); index = index + 1 {
     if len(allowedMovements[index]) == 2 {
       x := allowedMovements[index][0]
@@ -82,10 +81,7 @@ func pawnMovements(side bool, board [8][8]string, move []int) {
       }
     }
   }
-
-  fmt.Println(allowedMovements)
-	
-  // temp. print the board  
+  print(allowedMovements)
   var i, j = 0, 0
 	for ; i < 8; i++ {
 		for j = 0; j < 8; j++ {
@@ -93,73 +89,93 @@ func pawnMovements(side bool, board [8][8]string, move []int) {
 		}
 		fmt.Println("")
 	}
-
 }
 
-func knightMovements(side bool, board [8][8]string, move []int) {
-	color := "black"
-	if !side {
-		color = "white"
-	}
-	fmt.Println("got a " + color + " knight")
+func checkIfAllowed(move []int, allowedMovements [][]int) bool {
+  for index := 0; index < len(allowedMovements); index = index + 1 {
+    if len(allowedMovements[index]) == 2 {
+      x := allowedMovements[index][0]
+      y := allowedMovements[index][1]
+      if (move[3] == x && move[2] == y) {
+        return true
+      }
+    }
+  }
+  return false
 }
 
-func bishopMovements(side bool, board [8][8]string, move []int) {
+func pawnMovements(side bool, board [8][8]string, move []int) bool {
+  allowedKeys := [][]int{{1, 0}, {1, 1}, {1, -1}}
+  allowedMovements := checkKeyList(side, board, move, allowedKeys) 
+  return checkIfAllowed(move, allowedMovements)
+}
+
+func knightMovements(side bool, board [8][8]string, move []int) bool {
+  allowedKeys := [][]int{{2, 1}, {2, -1}, {-2, -1}, {-2, 1}, 
+      {1, 2}, {1, -2}, {-1, -2}, {-1, 2}}
+  allowedMovements := checkKeyList(side, board, move, allowedKeys) 
+  return checkIfAllowed(move, allowedMovements)
+}
+
+func kingMovements(side bool, board [8][8]string, move []int) bool {
+  allowedKeys := [][]int{{1, 1}, {1, -1}, {-1, 1}, {-1, -1}, 
+      {1, 0}, {-1, 0}, {0, -1}, {0, 1}}
+  allowedMovements := checkKeyList(side, board, move, allowedKeys) 
+  return checkIfAllowed(move, allowedMovements)
+}
+
+func bishopMovements(side bool, board [8][8]string, move []int) bool {
 	color := "black"
 	if !side {
 		color = "white"
 	}
 	fmt.Println("got a " + color + " bishop")
+  return false
 }
 
-func rookMovements(side bool, board [8][8]string, move []int) {
+func rookMovements(side bool, board [8][8]string, move []int) bool {
 	color := "black"
 	if !side {
 		color = "white"
 	}
 	fmt.Println("got a " + color + " rook")
+  return false
 }
 
-func queenMovements(side bool, board [8][8]string, move []int) {
+func queenMovements(side bool, board [8][8]string, move []int) bool {
 	color := "black"
 	if !side {
 		color = "white"
 	}
 	fmt.Println("got a " + color + " queen")
-}
-
-func kingMovements(side bool, board [8][8]string, move []int) {
-	color := "black"
-	if !side {
-		color = "white"
-	}
-	fmt.Println("got a " + color + " king")
+  return false
 }
 
 func CheckMovements(board [8][8]string, move []int) bool {
 	fromPiece := board[move[1]][move[0]]
 	toPiece := board[move[3]][move[2]]
+  result := false
 
 	fmt.Println(fromPiece, toPiece)
 
 	if fromPiece == "o" {
 		return false
 	}
-
-	switch strings.ToLower(fromPiece) {
+	
+  switch strings.ToLower(fromPiece) {
 	case "p":
-		pawnMovements(isUpper(fromPiece), board, move)
+    result = pawnMovements(isUpper(fromPiece), board, move)
 	case "k":
-		knightMovements(isUpper(fromPiece), board, move)
+		result = knightMovements(isUpper(fromPiece), board, move)
 	case "b":
-		bishopMovements(isUpper(fromPiece), board, move)
+		result = bishopMovements(isUpper(fromPiece), board, move)
 	case "r":
-		rookMovements(isUpper(fromPiece), board, move)
+		result = rookMovements(isUpper(fromPiece), board, move)
 	case "q":
-		queenMovements(isUpper(fromPiece), board, move)
+		result = queenMovements(isUpper(fromPiece), board, move)
 	case "x":
-		kingMovements(isUpper(fromPiece), board, move)
+    result = kingMovements(isUpper(fromPiece), board, move)
 	}
 
-	return true
+	return result 
 }
