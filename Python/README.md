@@ -14,7 +14,7 @@ Just a Terminal Chess ...
 ##           ##     ######  ##     ## ########  ######   ######
 =================================================================
 =================================================================
-Hint: JChess is still in development, so currently the
+Hint: PyChess is still in development, so currently the
  board does not rotate with the choice of color.
 
 Which color? (W/b) > w
