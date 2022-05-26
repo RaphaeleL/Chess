@@ -22,7 +22,7 @@ func DearScreen() {
 
 func ChooseColor() bool {
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Println("Hint: JChess is still in development, so currently the \n " +
+	fmt.Println("Hint: GoChess is still in development, so currently the \n " +
 		"board does not rotate with the choice of color.")
 	fmt.Print("\nWhich color? (W/b) > ")
 	playerInput, _ := reader.ReadString('\n')
