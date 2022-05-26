@@ -1,11 +1,12 @@
-//
-// Created by Raphaele Salvatore Licciardo on 26.05.22.
-//
+#ifndef BOARD_H
+#define BOARD_H
 
-#ifndef DESKTOP_BOARD_H
-#define DESKTOP_BOARD_H
+#define MAX_SIZE 8
 
-void foo();
+int board [MAX_SIZE][MAX_SIZE];
 
-#endif //DESKTOP_BOARD_H
+void fillBoard();
+void printBoard();
+
+#endif //BOARD_H
 

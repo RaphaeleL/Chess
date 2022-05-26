@@ -1,8 +1,13 @@
 #include <stdio.h>
 #include "Board/Board.h"
+#include "Utils/Movement.h"
 
 int main() {
-    printf("Hello, World!\n");
-    foo();
-    return 0;
+  dearScreen();
+  chooseColor();
+  
+  fillBoard();
+  printBoard();
+  
+  return 0;
 }
