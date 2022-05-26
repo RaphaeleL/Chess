@@ -1,0 +1,3 @@
+/Users/raphaele/Developer/Chess/C/build/CMakeFiles/chess.dir
+/Users/raphaele/Developer/Chess/C/build/CMakeFiles/edit_cache.dir
+/Users/raphaele/Developer/Chess/C/build/CMakeFiles/rebuild_cache.dir
