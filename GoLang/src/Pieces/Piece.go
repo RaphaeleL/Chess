@@ -259,6 +259,21 @@ func rookMovements(side bool, board [8][8]string, move []int) bool {
 }
 
 func queenMovements(side bool, board [8][8]string, move []int) bool {
+  allowedMovements := make([][]int, 32)
+  counter := 0
+
+  allowedMovements, counter = ba(move, counter, allowedMovements)
+  allowedMovements, counter = bb(move, counter, allowedMovements)
+  allowedMovements, counter = bc(move, counter, allowedMovements)
+  allowedMovements, counter = bd(move, counter, allowedMovements)
+  allowedMovements, counter = ra(move, counter, allowedMovements)
+  allowedMovements, counter = rb(move, counter, allowedMovements)
+  allowedMovements, counter = rc(move, counter, allowedMovements)
+  allowedMovements, counter = rd(move, counter, allowedMovements)
+  
+  fmt.Println(allowedMovements)
+  
+  printTmpBoard(allowedMovements, board)
   return false
 }
 
