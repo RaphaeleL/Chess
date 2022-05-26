@@ -141,74 +141,119 @@ func kingMovements(side bool, board [8][8]string, move []int) bool {
   return checkIfAllowed(move, allowedMovements)
 }
 
-func ba(move []int, counter int, allMovements [][]int) ([][]int, int) {
+func ba(move []int, counter int, allowedMovements [][]int, 
+    board [8][8]string) ([][]int, int) {
   x := move[1]
   y := move[0]
   for inBounds(x, y) {
     x = x - 1
     y = y - 1
-    allMovements[counter] = []int{x, y}
-    counter += 1
+    if inBounds(x, y) {
+      if board[x][y] == "o" {
+        allowedMovements[counter] = []int{x, y}
+        counter += 1
+        continue
+      }
+      if isUpper(board[x][y]) != isUpper(board[move[1]][move[0]]) {
+        allowedMovements[counter] = []int{x, y}
+        counter += 1
+      } else {
+        fmt.Println(x, y, board[x][y], board[move[1]][move[0]], "equal side")
+        break
+      } 
+    }
   }
-  return allMovements, counter
+  return allowedMovements, counter
 }
 
-func bb(move []int, counter int, allMovements [][]int) ([][]int, int) {
+func bb(move []int, counter int, allowedMovements [][]int, 
+    board [8][8]string) ([][]int, int) {
   x := move[1]
   y := move[0]
   for inBounds(x, y) {
     x = x + 1
     y = y + 1
-    allMovements[counter] = []int{x, y}
-    counter += 1
+    if inBounds(x, y) {
+      if board[x][y] == "o" {
+        allowedMovements[counter] = []int{x, y}
+        counter += 1
+        continue
+      }
+      if isUpper(board[x][y]) != isUpper(board[move[1]][move[0]]) {
+        allowedMovements[counter] = []int{x, y}
+        counter += 1
+      } else {
+        fmt.Println(x, y, board[x][y], board[move[1]][move[0]], "equal side")
+        break
+      } 
+    }
   }
-  return allMovements, counter
+  return allowedMovements, counter
 }
 
-func bc(move []int, counter int, allMovements [][]int) ([][]int, int) {
+func bc(move []int, counter int, allowedMovements [][]int, 
+    board [8][8]string) ([][]int, int) {
   x := move[1]
   y := move[0]
   for inBounds(x, y) {
     x = x - 1
     y = y + 1
-    allMovements[counter] = []int{x, y}
-    counter += 1
+    if inBounds(x, y) {
+      if board[x][y] == "o" {
+        allowedMovements[counter] = []int{x, y}
+        counter += 1
+        continue
+      }
+      if isUpper(board[x][y]) != isUpper(board[move[1]][move[0]]) {
+        allowedMovements[counter] = []int{x, y}
+        counter += 1
+      } else {
+        fmt.Println(x, y, board[x][y], board[move[1]][move[0]], "equal side")
+        break
+      } 
+    }
   }
-  return allMovements, counter
+  return allowedMovements, counter
 }
 
-func bd(move []int, counter int, allMovements [][]int) ([][]int, int) {
+func bd(move []int, counter int, allowedMovements [][]int, 
+    board [8][8]string) ([][]int, int) {
   x := move[1]
   y := move[0]
   for inBounds(x, y) {
     x = x + 1
     y = y - 1
-    allMovements[counter] = []int{x, y}
-    counter += 1
+    if inBounds(x, y) {
+      if board[x][y] == "o" {
+        allowedMovements[counter] = []int{x, y}
+        counter += 1
+        continue
+      }
+      if isUpper(board[x][y]) != isUpper(board[move[1]][move[0]]) {
+        allowedMovements[counter] = []int{x, y}
+        counter += 1
+      } else {
+        fmt.Println(x, y, board[x][y], board[move[1]][move[0]], "equal side")
+        break
+      } 
+    }
   }
-  return allMovements, counter
+  return allowedMovements, counter
 }
 
 func bishopMovements(side bool, board [8][8]string, move []int) bool {
   allowedMovements := make([][]int, 32)
-  allMovements := make([][]int, 32)
   counter := 0
 
-  allMovements, counter = ba(move, counter, allowedMovements)
-  allMovements, counter = bb(move, counter, allowedMovements)
-  allMovements, counter = bc(move, counter, allowedMovements)
-  allMovements, counter = bd(move, counter, allowedMovements)
+  allowedMovements, counter = ba(move, counter, allowedMovements, board)
+  allowedMovements, counter = bb(move, counter, allowedMovements, board)
+  allowedMovements, counter = bc(move, counter, allowedMovements, board)
+  allowedMovements, counter = bd(move, counter, allowedMovements, board)
 
-  // TODO stop the list if there is my figure
-  // TODO stop the list if there is an enemy figure (but eat them)
-
-  fmt.Println(allMovements)
-
-  printTmpBoard(allowedMovements, board)
-  return false
+  return checkIfAllowed(move, allowedMovements)
 }
 
-func ra(move []int, counter int, allMovements [][]int, 
+func ra(move []int, counter int, allowedMovements [][]int, 
     board [8][8]string) ([][]int, int) {
   x := move[1]
   y := move[0]
@@ -216,12 +261,12 @@ func ra(move []int, counter int, allMovements [][]int,
     x = x - 1
     if inBounds(x, y) {
       if board[x][y] == "o" {
-        allMovements[counter] = []int{x, y}
+        allowedMovements[counter] = []int{x, y}
         counter += 1
         continue
       }
       if isUpper(board[x][y]) != isUpper(board[move[1]][move[0]]) {
-        allMovements[counter] = []int{x, y}
+        allowedMovements[counter] = []int{x, y}
         counter += 1
       } else {
         fmt.Println(x, y, board[x][y], board[move[1]][move[0]], "equal side")
@@ -229,10 +274,10 @@ func ra(move []int, counter int, allMovements [][]int,
       } 
     }
   }
-  return allMovements, counter
+  return allowedMovements, counter
 }
 
-func rb(move []int, counter int, allMovements [][]int, 
+func rb(move []int, counter int, allowedMovements [][]int, 
     board [8][8]string) ([][]int, int) {
   x := move[1]
   y := move[0]
@@ -240,12 +285,12 @@ func rb(move []int, counter int, allMovements [][]int,
     x = x + 1
     if inBounds(x, y) {
       if board[x][y] == "o" {
-        allMovements[counter] = []int{x, y}
+        allowedMovements[counter] = []int{x, y}
         counter += 1
         continue
       }
       if isUpper(board[x][y]) != isUpper(board[move[1]][move[0]]) {
-        allMovements[counter] = []int{x, y}
+        allowedMovements[counter] = []int{x, y}
         counter += 1
       } else {
         fmt.Println(x, y, board[x][y], board[move[1]][move[0]], "equal side")
@@ -253,10 +298,10 @@ func rb(move []int, counter int, allMovements [][]int,
       } 
     }
   }
-  return allMovements, counter
+  return allowedMovements, counter
 }
 
-func rc(move []int, counter int, allMovements [][]int, 
+func rc(move []int, counter int, allowedMovements [][]int, 
     board [8][8]string) ([][]int, int) {
   x := move[1]
   y := move[0]
@@ -264,12 +309,12 @@ func rc(move []int, counter int, allMovements [][]int,
     y = y + 1
     if inBounds(x, y) {
       if board[x][y] == "o" {
-        allMovements[counter] = []int{x, y}
+        allowedMovements[counter] = []int{x, y}
         counter += 1
         continue
       }
       if isUpper(board[x][y]) != isUpper(board[move[1]][move[0]]) {
-        allMovements[counter] = []int{x, y}
+        allowedMovements[counter] = []int{x, y}
         counter += 1
       } else {
         fmt.Println(x, y, board[x][y], board[move[1]][move[0]], "equal side")
@@ -277,10 +322,10 @@ func rc(move []int, counter int, allMovements [][]int,
       } 
     }
   }
-  return allMovements, counter
+  return allowedMovements, counter
 }
 
-func rd(move []int, counter int, allMovements [][]int, 
+func rd(move []int, counter int, allowedMovements [][]int, 
     board [8][8]string) ([][]int, int) {
   x := move[1]
   y := move[0]
@@ -288,12 +333,12 @@ func rd(move []int, counter int, allMovements [][]int,
     y = y - 1
     if inBounds(x, y) {
       if board[x][y] == "o" {
-        allMovements[counter] = []int{x, y}
+        allowedMovements[counter] = []int{x, y}
         counter += 1
         continue
       }
       if isUpper(board[x][y]) != isUpper(board[move[1]][move[0]]) {
-        allMovements[counter] = []int{x, y}
+        allowedMovements[counter] = []int{x, y}
         counter += 1
       } else {
         fmt.Println(x, y, board[x][y], board[move[1]][move[0]], "equal side")
@@ -301,7 +346,7 @@ func rd(move []int, counter int, allMovements [][]int,
       } 
     }
   }
-  return allMovements, counter
+  return allowedMovements, counter
 }
 
 func isFree(x int, y int, board [8][8]string, move []int, fromPiece string) bool {
@@ -318,38 +363,31 @@ func isFree(x int, y int, board [8][8]string, move []int, fromPiece string) bool
 }
 
 func rookMovements(side bool, board [8][8]string, move []int) bool {
-  allMovements := make([][]int, 32)
   allowedMovements := make([][]int, 32)
   counter := 0
 
-  allMovements, counter = ra(move, counter, allowedMovements, board)
-  allMovements, counter = rb(move, counter, allowedMovements, board)
-  allMovements, counter = rc(move, counter, allowedMovements, board)
-  allMovements, counter = rd(move, counter, allowedMovements, board)
+  allowedMovements, counter = ra(move, counter, allowedMovements, board)
+  allowedMovements, counter = rb(move, counter, allowedMovements, board)
+  allowedMovements, counter = rc(move, counter, allowedMovements, board)
+  allowedMovements, counter = rd(move, counter, allowedMovements, board)
   
-  return checkIfAllowed(move, allMovements)
+  return checkIfAllowed(move, allowedMovements)
 }
 
 func queenMovements(side bool, board [8][8]string, move []int) bool {
   allowedMovements := make([][]int, 32)
   counter := 0
 
-  allowedMovements, counter = ba(move, counter, allowedMovements)
-  allowedMovements, counter = bb(move, counter, allowedMovements)
-  allowedMovements, counter = bc(move, counter, allowedMovements)
-  allowedMovements, counter = bd(move, counter, allowedMovements)
+  allowedMovements, counter = ba(move, counter, allowedMovements, board)
+  allowedMovements, counter = bb(move, counter, allowedMovements, board)
+  allowedMovements, counter = bc(move, counter, allowedMovements, board)
+  allowedMovements, counter = bd(move, counter, allowedMovements, board)
   allowedMovements, counter = ra(move, counter, allowedMovements, board)
   allowedMovements, counter = rb(move, counter, allowedMovements, board)
   allowedMovements, counter = rc(move, counter, allowedMovements, board)
   allowedMovements, counter = rd(move, counter, allowedMovements, board)
 
-  // TODO stop the list if there is my figure
-  // TODO stop the list if there is an enemy figure (but eat them)
-
-  fmt.Println(allowedMovements)
-
-  printTmpBoard(allowedMovements, board)
-  return false
+  return checkIfAllowed(move, allowedMovements)
 }
 
 func CheckMovements(board [8][8]string, move []int) bool {
