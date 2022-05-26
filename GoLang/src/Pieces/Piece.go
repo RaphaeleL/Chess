@@ -27,51 +27,62 @@ func checkDuplicate(allowedMovements [][]int, x int, y int) bool {
       }
     }
   }
-  return false 
+  return false
+}
+
+func walkable(side bool, board [8][8]string, x int, y int) bool {
+  if inBounds(x, y) {
+    toField := board[x][y]
+    toFieldSide := isUpper(toField)
+    if toField == "o" {
+      fmt.Println("empty")
+      return true
+    }
+    if toFieldSide == side {
+      fmt.Println("side equal")
+      return false
+    }
+  }
+  return true
 }
 
 func checkKeyList(side bool, board [8][8]string, move []int, allowedKeys [][]int) [][]int {
-  // TODO at the moment the own pieces of black are also marked als moveable
-  // TODO for white the same, but not always
-
-  // get baseline 
+  // get baseline
   baseline := 1
-  if !side {
-    baseline = 6
-	}
-  // get allowed steps and init allowed movements with helpfull counter
+  if !side { baseline = 6 }
+  // init some variables
   allowedMovements := make([][]int, cap(allowedKeys)*2+2)
   counter := 0
-  // iterate the allowed steps / keys
+  var x, y, x1, x2, y1, y2 int
+  // iterate the allowed keys
   for _, allowedKey := range allowedKeys {
-    // get white
-    x := move[1] - allowedKey[0]  
-    y := move[0] - allowedKey[1] 
-    // get black
+    // calc the x and y coords for two steps and key steps
+    x = move[1] - allowedKey[0]
+    y = move[0] - allowedKey[1]
     if side {
-	    // add baseline 2 steps movement
-      if baseline == move[1] && checkDuplicate(allowedMovements, x+3, y-1) {
-        allowedMovements[counter] = []int{x+3, y-1}
-        counter += 1
-      }
-      x = move[1] + allowedKey[0]  
-      y = move[0] + allowedKey[1]  
+      x1, y1 = x+3, y-1
+      x2 = move[1] + allowedKey[0]
+      y2 = move[0] + allowedKey[1]
+    } else {
+      x1, y1 = x-1, y-1
+      x2 = move[1] - allowedKey[0]
+      y2 = move[0] - allowedKey[1]
     }
-	  // baseline 2 steps movement
-    if baseline == move[1] && checkDuplicate(allowedMovements, x-1, y-1) { 
-      allowedMovements[counter] = []int{x-1, y-1}
+    // add baseline 2 steps movement
+    if baseline == move[1] && checkDuplicate(allowedMovements, x1, y1) {
+      if walkable(side, board, x1, y1) { allowedMovements[counter] = []int{x1, y1} }
       counter += 1
     }
-    // save the coords
-    allowedMovements[counter] = []int{x, y}
-    // helpfull stuff 
-    counter += 1 
+    // add keylist steps
+    if walkable(side, board, x2, y2) { allowedMovements[counter] = []int{x2, y2} }
+    // helpfull stuff
+    counter += 1
   }
-  printTmpBoard(allowedMovements, board)
+  //printTmpBoard(allowedMovements, board)
   return allowedMovements
 }
 
-func printTmpBoard(allowedMovements [][]int, board [8][8]string) {
+/*func printTmpBoard(allowedMovements [][]int, board [8][8]string) {
   for index := 0; index < len(allowedMovements); index = index + 1 {
     if len(allowedMovements[index]) == 2 {
       x := allowedMovements[index][0]
@@ -89,7 +100,7 @@ func printTmpBoard(allowedMovements [][]int, board [8][8]string) {
 		}
 		fmt.Println("")
 	}
-}
+}*/
 
 func checkIfAllowed(move []int, allowedMovements [][]int) bool {
   for index := 0; index < len(allowedMovements); index = index + 1 {
@@ -106,62 +117,45 @@ func checkIfAllowed(move []int, allowedMovements [][]int) bool {
 
 func pawnMovements(side bool, board [8][8]string, move []int) bool {
   allowedKeys := [][]int{{1, 0}, {1, 1}, {1, -1}}
-  allowedMovements := checkKeyList(side, board, move, allowedKeys) 
+  allowedMovements := checkKeyList(side, board, move, allowedKeys)
   return checkIfAllowed(move, allowedMovements)
 }
 
 func knightMovements(side bool, board [8][8]string, move []int) bool {
-  allowedKeys := [][]int{{2, 1}, {2, -1}, {-2, -1}, {-2, 1}, 
+  allowedKeys := [][]int{{2, 1}, {2, -1}, {-2, -1}, {-2, 1},
       {1, 2}, {1, -2}, {-1, -2}, {-1, 2}}
-  allowedMovements := checkKeyList(side, board, move, allowedKeys) 
+  allowedMovements := checkKeyList(side, board, move, allowedKeys)
   return checkIfAllowed(move, allowedMovements)
 }
 
 func kingMovements(side bool, board [8][8]string, move []int) bool {
-  allowedKeys := [][]int{{1, 1}, {1, -1}, {-1, 1}, {-1, -1}, 
+  allowedKeys := [][]int{{1, 1}, {1, -1}, {-1, 1}, {-1, -1},
       {1, 0}, {-1, 0}, {0, -1}, {0, 1}}
-  allowedMovements := checkKeyList(side, board, move, allowedKeys) 
+  allowedMovements := checkKeyList(side, board, move, allowedKeys)
   return checkIfAllowed(move, allowedMovements)
 }
 
 func bishopMovements(side bool, board [8][8]string, move []int) bool {
-	color := "black"
-	if !side {
-		color = "white"
-	}
-	fmt.Println("got a " + color + " bishop")
   return false
 }
 
 func rookMovements(side bool, board [8][8]string, move []int) bool {
-	color := "black"
-	if !side {
-		color = "white"
-	}
-	fmt.Println("got a " + color + " rook")
   return false
 }
 
 func queenMovements(side bool, board [8][8]string, move []int) bool {
-	color := "black"
-	if !side {
-		color = "white"
-	}
-	fmt.Println("got a " + color + " queen")
   return false
 }
 
 func CheckMovements(board [8][8]string, move []int) bool {
 	fromPiece := board[move[1]][move[0]]
-	toPiece := board[move[3]][move[2]]
+	// toPiece := board[move[3]][move[2]]
   result := false
-
-	fmt.Println(fromPiece, toPiece)
 
 	if fromPiece == "o" {
 		return false
 	}
-	
+
   switch strings.ToLower(fromPiece) {
 	case "p":
     result = pawnMovements(isUpper(fromPiece), board, move)
@@ -177,5 +171,5 @@ func CheckMovements(board [8][8]string, move []int) bool {
     result = kingMovements(isUpper(fromPiece), board, move)
 	}
 
-	return result 
+	return result
 }
