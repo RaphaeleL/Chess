@@ -82,7 +82,7 @@ func checkKeyList(side bool, board [8][8]string, move []int, allowedKeys [][]int
   return allowedMovements
 }
 
-/*func printTmpBoard(allowedMovements [][]int, board [8][8]string) {
+func printTmpBoard(allowedMovements [][]int, board [8][8]string) {
   for index := 0; index < len(allowedMovements); index = index + 1 {
     if len(allowedMovements[index]) == 2 {
       x := allowedMovements[index][0]
@@ -100,7 +100,7 @@ func checkKeyList(side bool, board [8][8]string, move []int, allowedKeys [][]int
 		}
 		fmt.Println("")
 	}
-}*/
+}
 
 func checkIfAllowed(move []int, allowedMovements [][]int) bool {
   for index := 0; index < len(allowedMovements); index = index + 1 {
@@ -135,11 +135,126 @@ func kingMovements(side bool, board [8][8]string, move []int) bool {
   return checkIfAllowed(move, allowedMovements)
 }
 
+func ba(move []int, counter int, allowedMovements [][]int) ([][]int, int) {
+  x := move[1]
+  y := move[0]
+  for inBounds(x, y) {
+    x = x - 1
+    y = y - 1
+    allowedMovements[counter] = []int{x, y} 
+    counter += 1
+  }
+  return allowedMovements, counter
+}
+
+func bb(move []int, counter int, allowedMovements [][]int) ([][]int, int) {
+  x := move[1]
+  y := move[0]
+  for inBounds(x, y) {
+    x = x + 1
+    y = y + 1
+    allowedMovements[counter] = []int{x, y} 
+    counter += 1
+  }
+  return allowedMovements, counter
+}
+
+func bc(move []int, counter int, allowedMovements [][]int) ([][]int, int) {
+  x := move[1]
+  y := move[0]
+  for inBounds(x, y) {
+    x = x - 1
+    y = y + 1
+    allowedMovements[counter] = []int{x, y} 
+    counter += 1
+  }
+  return allowedMovements, counter
+}
+
+func bd(move []int, counter int, allowedMovements [][]int) ([][]int, int) {
+  x := move[1]
+  y := move[0]
+  for inBounds(x, y) {
+    x = x + 1
+    y = y - 1
+    allowedMovements[counter] = []int{x, y} 
+    counter += 1
+  }
+  return allowedMovements, counter
+}
+
 func bishopMovements(side bool, board [8][8]string, move []int) bool {
+  allowedMovements := make([][]int, 32)
+  counter := 0
+
+  allowedMovements, counter = ba(move, counter, allowedMovements)
+  allowedMovements, counter = bb(move, counter, allowedMovements)
+  allowedMovements, counter = bc(move, counter, allowedMovements)
+  allowedMovements, counter = bd(move, counter, allowedMovements)
+  
+  fmt.Println(allowedMovements)
+  
+  printTmpBoard(allowedMovements, board)
   return false
 }
 
+func ra(move []int, counter int, allowedMovements [][]int) ([][]int, int) {
+  x := move[1]
+  y := move[0]
+  for inBounds(x, y) {
+    x = x - 1
+    allowedMovements[counter] = []int{x, y} 
+    counter += 1
+  }
+  return allowedMovements, counter
+}
+
+func rb(move []int, counter int, allowedMovements [][]int) ([][]int, int) {
+  x := move[1]
+  y := move[0]
+  for inBounds(x, y) {
+    x = x + 1
+    allowedMovements[counter] = []int{x, y} 
+    counter += 1
+  }
+  return allowedMovements, counter
+}
+
+func rc(move []int, counter int, allowedMovements [][]int) ([][]int, int) {
+  x := move[1]
+  y := move[0]
+  for inBounds(x, y) {
+    y = y + 1
+    allowedMovements[counter] = []int{x, y} 
+    counter += 1
+  }
+  return allowedMovements, counter
+}
+
+func rd(move []int, counter int, allowedMovements [][]int) ([][]int, int) {
+  x := move[1]
+  y := move[0]
+  for inBounds(x, y) {
+    y = y - 1
+    allowedMovements[counter] = []int{x, y} 
+    counter += 1
+  }
+  return allowedMovements, counter
+}
+
+
 func rookMovements(side bool, board [8][8]string, move []int) bool {
+  allowedMovements := make([][]int, 32)
+  counter := 0
+
+  allowedMovements, counter = ra(move, counter, allowedMovements)
+  allowedMovements, counter = rb(move, counter, allowedMovements)
+  allowedMovements, counter = rc(move, counter, allowedMovements)
+  allowedMovements, counter = rd(move, counter, allowedMovements)
+  
+  fmt.Println(allowedMovements)
+  
+  printTmpBoard(allowedMovements, board)
   return false
 }
 
