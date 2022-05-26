@@ -2,3 +2,5 @@
 .*.swp
 .idea
 C/cmake-build-debug
+C/build
+.ccls-cache/
