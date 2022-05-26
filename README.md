@@ -6,7 +6,7 @@ Just a Terminal Chess in different Programming Languages
 
 - [x] Java
 - [x] Python
-- [ ] GoLang
+- [x] GoLang
 - [ ] C
 - [ ] C++
 - [ ] Rust 
