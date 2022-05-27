@@ -12,7 +12,11 @@ The games can be started in different ways. It could be loaded into an IDE of ch
 
 ### Java
 
-> Please use an IDE :D
+```bash
+$ cd src
+$ javac Main.java 
+$ java Main
+```
 
 ### Python
 
