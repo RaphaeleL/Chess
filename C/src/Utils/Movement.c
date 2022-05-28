@@ -3,10 +3,10 @@
 #include <ctype.h>
 #include <string.h>
 
-int fromX = -1; 
-int fromY = -1; 
-int toX = -1; 
-int toY = -1; 
+char fromX = -1; 
+char fromY = -1; 
+char toX = -1; 
+char toY = -1; 
 
 void dearScreen() {
   printf(" ######   ######  ##     ## ########  ######   ######  \n");
@@ -21,7 +21,7 @@ void dearScreen() {
 } 
 
 void printCoords() {
-  printf("From:\t (%d-%d)\nTo:\t (%d-%d)", fromX, fromY, toX, toY);
+  printf("From:\t (%c-%c)\nTo:\t (%c-%c)", fromX, fromY, toX, toY);
 }
 
 void setCoords(int counter, int mod) {
@@ -36,30 +36,28 @@ void setCoords(int counter, int mod) {
   }
 }
 
-void prepare(int input) {
-  int values[4];
-  int counter = 3; 
-
-  while(input > 0) { 
-    int mod = input % 10;
-    setCoords(counter, mod);
-    values[counter] = mod; 
-    input = input / 10;
-    counter--;
-  }
-
-  printCoords();
+void getInput(char* side) {
+  printf("\n%s from-x \t> ", side);
+  scanf("%c", &fromX);
+  getchar();
+  printf("%s from-y \t> ", side);
+  scanf("%c", &fromY);
+  getchar();
+  printf("%s to-x \t> ", side);
+  scanf("%c", &toX);
+  getchar();
+  printf("%s to-y \t> ", side);
+  scanf("%c", &toY);
+  getchar();
+  //printCoords();
 }
 
-int getPlayerInput(int side) {
-  int input; 
+void getPlayerInput(int side) {
   if (side == 1) { 
-    printf("\nWHITE [From,To] > ");
+    getInput("WHITE");
   } else if (side == -1) {
-    printf("\nBLACK [From,To] > ");
+    getInput("BLACK");
   }
-  scanf("%d", &input);
-  return input;
 }
 
 int hasWinner() {

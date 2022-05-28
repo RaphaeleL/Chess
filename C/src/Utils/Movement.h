@@ -3,11 +3,10 @@
 
 void dearScreen(); 
 int chooseColor();
-int getPlayerInput(int side);
+void getPlayerInput(int side);
 int hasWinner();
 void checkWinner();
 void handleWinner();
-void prepare(int input);
 void setCoords(int counter, int mod);
 void printCoords();
 

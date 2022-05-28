@@ -9,8 +9,9 @@ int main() {
   printBoard();
   
   while (hasWinner() == 1) {
-    int input = getPlayerInput(side);
-    prepare(input);
+    //int input = getPlayerInput(side);
+    //prepare(input);
+    getPlayerInput(side);
 
     side = side * -1;
   }
