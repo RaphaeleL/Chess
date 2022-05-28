@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include "Board.h"
 
+void makeMove(int fromX, int fromY, int toX, int toY) {
+  board[fromY][fromX] = -9;  
+  board[toY][toX] = -9;  
+}
+
 void fillBoard() {
   // rook
   board[0][0] = 1; 

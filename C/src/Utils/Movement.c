@@ -20,8 +20,36 @@ void dearScreen() {
   printf("======================================================\n");
 } 
 
-void printCoords() {
-  printf("From:\t (%c-%c)\nTo:\t (%c-%c)", fromX, fromY, toX, toY);
+int getPosition (char c) {
+  int pos;
+  const char * alphabet = "abcdefghijklmnopqrstuvwxyz";
+  const char * found;
+  c = tolower ((unsigned char)c);
+  found = strchr (alphabet, c);
+  pos = found - alphabet;
+  if (!found)
+      pos = 0;
+  else if (pos == 26)
+      pos = 0;
+  else
+      pos++;
+  return pos;
+}
+
+int getFromX() {
+  return getPosition(fromX) - 1;
+}
+
+int getFromY() {
+  return (int) fromY - '0' - 1;
+}
+
+int getToX() {
+  return getPosition(toX) - 1;
+}
+
+int getToY() {
+  return (int) toY - '0' - 1;
 }
 
 void setCoords(int counter, int mod) {
@@ -58,6 +86,7 @@ void getPlayerInput(int side) {
   } else if (side == -1) {
     getInput("BLACK");
   }
+  printf("\n");
 }
 
 int hasWinner() {
