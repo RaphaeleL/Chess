@@ -4,10 +4,16 @@
 
 int main() {
   dearScreen();
-  chooseColor();
-  
+  int side = 1; // WHITE 
   fillBoard();
   printBoard();
+  
+  while (hasWinner() == 1) {
+    int input = getPlayerInput(side);
+    prepare(input);
+
+    side = side * -1;
+  }
   
   return 0;
 }
