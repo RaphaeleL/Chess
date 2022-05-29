@@ -18,6 +18,10 @@ void dearScreen() {
   printf(" ######   ######  ##     ## ########  ######   ######  \n");
   printf("======================================================\n");
   printf("======================================================\n");
+  printf("Hint: CChess is still in development, so currently the \n ");
+  printf("board does not rotate with the choice of color.\n");
+  printf("======================================================\n");
+  printf("======================================================\n");
 } 
 
 int getPosition (char c) {
@@ -65,16 +69,16 @@ void setCoords(int counter, int mod) {
 }
 
 void getInput(char* side) {
-  printf("\n%s from-x \t> ", side);
+  printf("\n%s from-x > ", side);
   scanf("%c", &fromX);
   getchar();
-  printf("%s from-y \t> ", side);
+  printf("%s from-y > ", side);
   scanf("%c", &fromY);
   getchar();
-  printf("%s to-x \t> ", side);
+  printf("%s to-x   > ", side);
   scanf("%c", &toX);
   getchar();
-  printf("%s to-y \t> ", side);
+  printf("%s to-y   > ", side);
   scanf("%c", &toY);
   getchar();
   //printCoords();

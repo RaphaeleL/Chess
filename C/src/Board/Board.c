@@ -66,14 +66,13 @@ char getRepresentation(int figure) {
 }
 
 void printBoard() {
-  
   printf("+-------------+\n");
   printf("| Black       |\n");
   printf("+-------------+\n");
   printf("\na1                    h1\n");
-  printf("   +----------------+\n");
+  printf("   +-----------------+\n");
   for (int i = 0; i < MAX_SIZE; i++) {
-    printf("   |");
+    printf("   | ");
     for (int j = 0; j < MAX_SIZE; j++) {
       //printf("(%d-%d) \t", i, j);
       printf("%c ", getRepresentation(board[i][j]));
@@ -83,7 +82,7 @@ void printBoard() {
       printf("\n");
     }
   }
-  printf("\n   +----------------+\n");
+  printf("\n   +-----------------+\n");
   printf("a8                    h8\n");
   printf("\t\t\t+-------------+\n");
   printf("\t\t\t| White       |\n");
