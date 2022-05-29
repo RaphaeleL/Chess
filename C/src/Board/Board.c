@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include "Board.h"
+#include "../Pieces/Piece.h"
 
 void makeMove(int fromX, int fromY, int toX, int toY) {
-  int fromPiece = board[fromY][fromX];
-  board[fromY][fromX] = 0; 
-  board[toY][toX] = fromPiece;
+  if (check(fromX, fromY, toX, toY, board)) {
+    int fromPiece = board[fromY][fromX];
+    board[fromY][fromX] = 0; 
+    board[toY][toX] = fromPiece;
+  } 
 }
 
 void fillBoard() {

@@ -7,4 +7,5 @@ add_executable(chess
   src/main.c 
   src/Board/Board.c src/Board/Board.h
   src/Utils/Movement.c src/Utils/Movement.h
+  src/Pieces/Piece.c src/Pieces/Piece.h
   )
