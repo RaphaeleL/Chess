@@ -5,6 +5,7 @@
 
 int board [MAX_SIZE][MAX_SIZE];
 
+char getRepresentation(int figure);
 void makeMove(int fromX, int fromY, int toX, int toY);
 void fillBoard();
 void printBoard();

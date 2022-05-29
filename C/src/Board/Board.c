@@ -35,16 +35,57 @@ void fillBoard() {
   }
 }
 
-void printBoard() {
-  for (int i = 0; i < MAX_SIZE; i++) {
-    for (int j = 0; j < MAX_SIZE; j++) {
-      //printf("(%d-%d) \t", i, j);
-      printf("%d\t", board[i][j]);
-    }
-    if (i != MAX_SIZE-1) {
-      printf("\n\n\n");
-    }
+char getRepresentation(int figure) {
+  char repr = 'o'; 
+  if (figure == 1) {
+    repr = 'R';
+  } else if (figure == 2) {
+    repr = 'K';
+  } else if (figure == 3) {
+    repr = 'B';
+  } else if (figure == 4) {
+    repr = 'Q';
+  } else if (figure == 5) {
+    repr = 'X';
+  } else if (figure == 6) {
+    repr = 'P';
+  } else if (figure == -1) {
+    repr = 'r';
+  } else if (figure == -2) {
+    repr = 'k';
+  } else if (figure == -3) {
+    repr = 'b';
+  } else if (figure == -4) {
+    repr = 'q';
+  } else if (figure == -5) {
+    repr = 'x';
+  } else if (figure == -6) {
+    repr = 'p';
   }
-  printf("\n");
+  return repr;
 }
 
+void printBoard() {
+  
+  printf("+-------------+\n");
+  printf("| Black       |\n");
+  printf("+-------------+\n");
+  printf("\na1                    h1\n");
+  printf("   +----------------+\n");
+  for (int i = 0; i < MAX_SIZE; i++) {
+    printf("   |");
+    for (int j = 0; j < MAX_SIZE; j++) {
+      //printf("(%d-%d) \t", i, j);
+      printf("%c ", getRepresentation(board[i][j]));
+    }
+    printf("|");
+    if (i != MAX_SIZE-1) {
+      printf("\n");
+    }
+  }
+  printf("\n   +----------------+\n");
+  printf("a8                    h8\n");
+  printf("\t\t\t+-------------+\n");
+  printf("\t\t\t| White       |\n");
+  printf("\t\t\t+-------------+\n");
+}
