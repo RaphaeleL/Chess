@@ -47,6 +47,6 @@ $ ./chess
 - [x] Java
 - [x] Python
 - [x] GoLang
-- [ ] C (in progress...)
+- [x] C
 - [ ] C++
 - [ ] Rust 
