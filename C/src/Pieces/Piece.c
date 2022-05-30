@@ -9,6 +9,122 @@ int inBounds(int x, int y) {
   return 0;
 }
 
+int ba(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
+  int x = fromX - 1; 
+  int y = fromY - 1;
+  while (inBounds(x, y)) {
+    if (side) {
+      if (board[x][y] > 0) { 
+        break;
+      } else if ((board[x][y] > 0) != (board[fromX][fromY] > 0)) {
+        if ((toX == x) && (toY == y)) { return 1; }
+        break;
+      } else if (board[x][y] == 0) {
+        if ((toX == x) && (toY == y)) { return 1; }
+      }
+    } else {
+      if (board[x][y] < 0) { 
+        break;
+      } else if ((board[x][y] < 0) != (board[fromX][fromY] < 0)) {
+        if ((toX == x) && (toY == y)) { return 1; }
+        break;
+      } else if (board[x][y] == 0) {
+        if ((toX == x) && (toY == y)) { return 1; }
+      }
+    }
+    x--;
+    y--;
+  }
+  return 0;
+}
+
+int bb(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
+  int x = fromX + 1; 
+  int y = fromY + 1;
+  while (inBounds(x, y)) {
+    if (side) {
+      if (board[x][y] > 0) { 
+        break;
+      } else if ((board[x][y] > 0) != (board[fromX][fromY] > 0)) {
+        if ((toX == x) && (toY == y)) { return 1; }
+        break;
+      } else if (board[x][y] == 0) {
+        if ((toX == x) && (toY == y)) { return 1; }
+      }
+    } else {
+      if (board[x][y] < 0) { 
+        break;
+      } else if ((board[x][y] < 0) != (board[fromX][fromY] < 0)) {
+        if ((toX == x) && (toY == y)) { return 1; }
+        break;
+      } else if (board[x][y] == 0) {
+        if ((toX == x) && (toY == y)) { return 1; }
+      }
+    }
+    x++;
+    y++;
+  }
+  return 0;
+}
+
+int bc(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
+  int x = fromX - 1; 
+  int y = fromY + 1;
+  while (inBounds(x, y)) {
+    if (side) {
+      if (board[x][y] > 0) { 
+        break;
+      } else if ((board[x][y] > 0) != (board[fromX][fromY] > 0)) {
+        if ((toX == x) && (toY == y)) { return 1; }
+        break;
+      } else if (board[x][y] == 0) {
+        if ((toX == x) && (toY == y)) { return 1; }
+      }
+    } else {
+      if (board[x][y] < 0) { 
+        break;
+      } else if ((board[x][y] < 0) != (board[fromX][fromY] < 0)) {
+        if ((toX == x) && (toY == y)) { return 1; }
+        break;
+      } else if (board[x][y] == 0) {
+        if ((toX == x) && (toY == y)) { return 1; }
+      }
+    }
+    x--;
+    y++;
+  }
+  return 0;
+}
+
+int bd(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
+  int x = fromX + 1; 
+  int y = fromY - 1;
+  while (inBounds(x, y)) {
+    if (side) {
+      if (board[x][y] > 0) { 
+        break;
+      } else if ((board[x][y] > 0) != (board[fromX][fromY] > 0)) {
+        if ((toX == x) && (toY == y)) { return 1; }
+        break;
+      } else if (board[x][y] == 0) {
+        if ((toX == x) && (toY == y)) { return 1; }
+      }
+    } else {
+      if (board[x][y] < 0) { 
+        break;
+      } else if ((board[x][y] < 0) != (board[fromX][fromY] < 0)) {
+        if ((toX == x) && (toY == y)) { return 1; }
+        break;
+      } else if (board[x][y] == 0) {
+        if ((toX == x) && (toY == y)) { return 1; }
+      }
+    }
+    x++;
+    y--;
+  }
+  return 0;
+}
+
 int ra(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
   int x = fromX - 1; 
   int y = fromY;
@@ -126,9 +242,6 @@ int checkRook(int side, int fromX, int fromY, int toX, int toY, int board[8][8])
   int b = rb(side, fromX, fromY, toX, toY, board);
   int c = rc(side, fromX, fromY, toX, toY, board);
   int d = rd(side, fromX, fromY, toX, toY, board);
-  
-  printf("%d %d %d %d -> %d\n", a, b, c, c, (a || b || c || d));
-
   return (a || b || c || d);
 }
 
@@ -137,7 +250,11 @@ int checkQueen(int side, int fromX, int fromY, int toX, int toY, int board[8][8]
 }
 
 int checkBishop(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
-  return 0;
+  int a = ba(side, fromX, fromY, toX, toY, board);
+  int b = bb(side, fromX, fromY, toX, toY, board);
+  int c = bc(side, fromX, fromY, toX, toY, board);
+  int d = bd(side, fromX, fromY, toX, toY, board);
+  return (a || b || c || d);
 }
 
 int checkKeyList(int size, int allowedKeys[cap][2], int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
