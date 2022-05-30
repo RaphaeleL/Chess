@@ -1,6 +1,8 @@
 #ifndef PIECE_H
 #define PIECE_H
 
+int checkKeyList(int size, int allowedKeys[3][2], int side, int fromX, int fromY, int toX, int toY, int board[8][8]); 
+
 int checkRook(int side); 
 int checkBishop(int side); 
 int checkKnight(int side); 
