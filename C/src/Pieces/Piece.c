@@ -1,17 +1,143 @@
 #include <stdio.h>
-#include "../Board/Board.h" 
+#include "../Board/Board.h"
+#include "Piece.h"
 
-int cap = 0; 
+int inBounds(int x, int y) {
+  if ((0 <= x) && (x < 8) && (0 <= y) && (y < 8)) {
+    return 1;
+  }
+  return 0;
+}
+
+int ra(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
+  int x = fromX - 1; 
+  int y = fromY;
+  while (inBounds(x, y)) {
+    if (side) {
+      if (board[x][y] > 0) { 
+        break;
+      } else if ((board[x][y] > 0) != (board[fromX][fromY] > 0)) {
+        if ((toX == x) && (toY == y)) { return 1; }
+        break;
+      } else if (board[x][y] == 0) {
+        if ((toX == x) && (toY == y)) { return 1; }
+      }
+    } else {
+      if (board[x][y] < 0) { 
+        break;
+      } else if ((board[x][y] < 0) != (board[fromX][fromY] < 0)) {
+        if ((toX == x) && (toY == y)) { return 1; }
+        break;
+      } else if (board[x][y] == 0) {
+        if ((toX == x) && (toY == y)) { return 1; }
+      }
+    }
+    x--;
+  }
+  return 0;
+}
+
+int rb(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
+  int x = fromX + 1; 
+  int y = fromY;
+  while (inBounds(x, y)) {
+    if (side) {
+      if (board[x][y] > 0) { 
+        break;
+      } else if ((board[x][y] > 0) != (board[fromX][fromY] > 0)) {
+        if ((toX == x) && (toY == y)) { return 1; }
+        break;
+      } else if (board[x][y] == 0) {
+        if ((toX == x) && (toY == y)) { return 1; }
+      }
+    } else {
+      if (board[x][y] < 0) { 
+        break;
+      } else if ((board[x][y] < 0) != (board[fromX][fromY] < 0)) {
+        if ((toX == x) && (toY == y)) { return 1; }
+        break;
+      } else if (board[x][y] == 0) {
+        if ((toX == x) && (toY == y)) { return 1; }
+      }
+    }
+    x++;
+  }
+  return 0;
+}
+
+int rc(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
+  int x = fromX; 
+  int y = fromY + 1;
+  while (inBounds(x, y)) {
+    if (side) {
+      if (board[x][y] > 0) { 
+        break;
+      } else if ((board[x][y] > 0) != (board[fromX][fromY] > 0)) {
+        if ((toX == x) && (toY == y)) { return 1; }
+        break;
+      } else if (board[x][y] == 0) {
+        if ((toX == x) && (toY == y)) { return 1; }
+      }
+    } else {
+      if (board[x][y] < 0) { 
+        break;
+      } else if ((board[x][y] < 0) != (board[fromX][fromY] < 0)) {
+        if ((toX == x) && (toY == y)) { return 1; }
+        break;
+      } else if (board[x][y] == 0) {
+        if ((toX == x) && (toY == y)) { return 1; }
+      }
+    }
+    y++;
+  }
+  return 0;
+}
+
+int rd(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
+  int x = fromX; 
+  int y = fromY - 1;
+  while (inBounds(x, y)) {
+    if (side) {
+      if (board[x][y] > 0) { 
+        break;
+      } else if ((board[x][y] > 0) != (board[fromX][fromY] > 0)) {
+        if ((toX == x) && (toY == y)) { return 1; }
+        break;
+      } else if (board[x][y] == 0) {
+        if ((toX == x) && (toY == y)) { return 1; }
+      }
+    } else {
+      if (board[x][y] < 0) { 
+        break;
+      } else if ((board[x][y] < 0) != (board[fromX][fromY] < 0)) {
+        if ((toX == x) && (toY == y)) { return 1; }
+        break;
+      } else if (board[x][y] == 0) {
+        if ((toX == x) && (toY == y)) { return 1; }
+      }
+    }
+    y--;
+  }
+  return 0;
+}
 
 int checkRook(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
-  return 1;
+  int a = ra(side, fromX, fromY, toX, toY, board);
+  int b = rb(side, fromX, fromY, toX, toY, board);
+  int c = rc(side, fromX, fromY, toX, toY, board);
+  int d = rd(side, fromX, fromY, toX, toY, board);
+  
+  printf("%d %d %d %d -> %d\n", a, b, c, c, (a || b || c || d));
+
+  return (a || b || c || d);
 }
 
 int checkQueen(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
-  return 1;
+  return 0;
 }
+
 int checkBishop(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
-  return 1;
+  return 0;
 }
 
 int checkKeyList(int size, int allowedKeys[cap][2], int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
@@ -32,7 +158,6 @@ int checkKeyList(int size, int allowedKeys[cap][2], int side, int fromX, int fro
   }
   return -1;
 }
-
 
 int checkKing(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
   int x, y;
@@ -56,11 +181,11 @@ int checkPawn(int side, int fromX, int fromY, int toX, int toY, int board[8][8])
   int allowedKeys[3][2] = {{1, 0}, {1, 1}, {1, -1}};
   int size = sizeof(allowedKeys)/sizeof(allowedKeys[0]);
   // add baseline 2 steps movement
-  x = fromX - 2; 
-  y = fromY; 
+  x = fromX - 2;
+  y = fromY;
   if (!side) {
-    x = fromX + 2; 
-    y = fromY; 
+    x = fromX + 2;
+    y = fromY;
   }
   // check if move is allowed
   if ((toX == x) && (toY == y)) {
