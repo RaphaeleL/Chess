@@ -41,7 +41,11 @@ a8                     h8
 			| White       |
 			+-------------+
 
-WHITE [From,To] > a7a5
+WHITE from-x > a
+WHITE from-x > 7
+WHITE to-x   > a
+WHITE to-y   > 5
+
 +-------------+
 | Black       |
 +-------------+
@@ -63,7 +67,11 @@ a8                     h8
 			| White       |
 			+-------------+
 
-BLACK [From,To] > b2b4
+BLACK from-x > b 
+BLACK from-x > 2  
+BLACK to-x   > b 
+BLACK to-y   > 4 
+
 +-------------+
 | Black       |
 +-------------+
@@ -85,7 +93,11 @@ a8                     h8
 			| White       |
 			+-------------+
 
-WHITE [From,To] > a5b4
+WHITE from-x > a
+WHITE from-x > 5 
+WHITE to-x   > a
+WHITE to-y   > 4
+
 +-------------+
 | Black       |
 +-------------+
@@ -107,7 +119,7 @@ a8                     h8
 			| White       |
 			+-------------+
 
-BLACK [From,To] >
+BLACK from-x >
 ```
 
 ## Todo 
