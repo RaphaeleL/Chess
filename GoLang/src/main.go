@@ -10,13 +10,11 @@ func main() {
 	side := M.ChooseColor()
 	board := B.FillBoard()
 	B.PrintBoard(board)
-	for B.HasWinner() {
+	for B.CheckWinner(board) {
 		board = M.Move(board, side)
 		B.PrintBoard(board)
 		if B.Success {
 			side = !side
 		}
-		B.CheckWinner()
 	}
-	B.HandleWinner()
 }

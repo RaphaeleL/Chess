@@ -4,6 +4,7 @@ import (
 	P "src/Pieces"
 	"fmt"
 	"strings"
+  "unicode"
 )
 
 var Success = true
@@ -58,14 +59,46 @@ func PrintBoard(board [8][8]string) {
 	fmt.Println("\t\t\t+-------------+")
 }
 
-func HasWinner() bool {
-	return true
+func isUpper(s string) bool {
+  for _, r := range s {
+    if !unicode.IsUpper(r) && unicode.IsLetter(r) {
+      return false
+    }
+  }
+  return true
 }
 
-func CheckWinner() bool {
-	return false
+func CheckWinner(board [8][8]string) bool {
+  blackCount := 0
+  whiteCount := 0
+	var i, j = 0, 0
+	for ; i < 8; i++ {
+		for j = 0; j < 8; j++ {
+      if board[i][j] != "o" {
+        if isUpper(board[i][j]) {
+          blackCount++;
+        } else {
+          whiteCount++;
+        }
+      }
+		}
+	}
+  if blackCount == 0 {
+    HandleWinner(true)
+    return false 
+  } else if whiteCount == 0 {
+    HandleWinner(false)
+    return false 
+  }
+  return true
 }
 
-func HandleWinner() bool {
-	return false
+func HandleWinner(side bool) {
+  fmt.Println("======================================================");
+  if side {
+    fmt.Println("Black won");
+  } else {
+    fmt.Println("White won");
+  }
+  fmt.Println("======================================================");
 }
