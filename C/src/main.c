@@ -8,7 +8,7 @@ int main() {
   fillBoard();
   printBoard();
   
-  while (hasWinner() == 1) {
+  while (checkWinner(board)) {
     getPlayerInput(side);
     makeMove(getFromX(), getFromY(), getToX(), getToY()); 
 

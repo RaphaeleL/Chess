@@ -93,15 +93,36 @@ void getPlayerInput(int side) {
   printf("\n");
 }
 
-int hasWinner() {
-   return 1;
+int checkWinner(int board[8][8]) {
+   int blackCount = 0; 
+   int whiteCount = 0; 
+   for (int i = 0; i < 8; i++) {
+     for (int j = 0; j < 8; j++) {
+        int piece = board[i][j];
+        if (piece > 0) {
+          blackCount++;
+        } else if (piece < 0) {
+          whiteCount++;
+        }
+     }
+   }
+   if (blackCount == 0) {
+     handleWinner(1); 
+    return 0;
+   } else if (whiteCount == 0) {
+     handleWinner(2);
+    return 0;
+   }
+  return 1;
 }
 
-void checkWinner() {
-
-}
-
-void handleWinner() {
-
+void handleWinner(int side) {
+  printf("======================================================\n");
+  if (side == 1) {
+    printf("Black won\n");
+  } else if (side == 2) {
+    printf("White won\n");
+  }
+  printf("======================================================\n");
 }
 
