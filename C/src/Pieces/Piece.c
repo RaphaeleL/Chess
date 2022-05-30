@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "../Board/Board.h" 
 
+int cap = 0; 
+
 int checkRook(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
   return 1;
 }
@@ -12,16 +14,11 @@ int checkQueen(int side, int fromX, int fromY, int toX, int toY, int board[8][8]
 int checkKing(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
   return 1;
 }
-
-int checkKnight(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
-  return 1;
-}
-
 int checkBishop(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
   return 1;
 }
 
-int checkKeyList(int size, int allowedKeys[3][2], int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
+int checkKeyList(int size, int allowedKeys[cap][2], int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
   int x, y;
   // iterate the allowed keys
   for (int i = 0; i < size; i++) {
@@ -40,8 +37,17 @@ int checkKeyList(int size, int allowedKeys[3][2], int side, int fromX, int fromY
   return -1;
 }
 
+int checkKnight(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
+  int x, y;
+  cap = 8;
+  int allowedKeys[8][2] = {{2, 1}, {2, -1}, {-2, -1}, {-2, 1}, {1, 2}, {1, -2}, {-1, -2}, {-1, 2}};
+  int size = sizeof(allowedKeys)/sizeof(allowedKeys[0]);
+  return checkKeyList(size, allowedKeys, side, fromX, fromY, toX, toY, board);
+}
+
 int checkPawn(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
   int x, y;
+  cap = 3;
   int allowedKeys[3][2] = {{1, 0}, {1, 1}, {1, -1}};
   int size = sizeof(allowedKeys)/sizeof(allowedKeys[0]);
   // add baseline 2 steps movement
