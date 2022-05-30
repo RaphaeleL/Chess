@@ -64,6 +64,8 @@ char getRepresentation(int figure) {
     repr = 'x';
   } else if (figure == -6) {
     repr = 'p';
+  } else if (figure == -9) {
+    repr = '+';
   }
   return repr;
 }
