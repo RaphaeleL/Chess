@@ -10,10 +10,6 @@ int checkRook(int side, int fromX, int fromY, int toX, int toY, int board[8][8])
 int checkQueen(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
   return 1;
 }
-
-int checkKing(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
-  return 1;
-}
 int checkBishop(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
   return 1;
 }
@@ -35,6 +31,15 @@ int checkKeyList(int size, int allowedKeys[cap][2], int side, int fromX, int fro
     }
   }
   return -1;
+}
+
+
+int checkKing(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
+  int x, y;
+  cap = 8;
+  int allowedKeys[8][2] = {{1, 1}, {1, -1}, {-1, 1}, {-1, -1}, {1, 0}, {-1, 0}, {0, -1}, {0, 1}};
+  int size = sizeof(allowedKeys)/sizeof(allowedKeys[0]);
+  return checkKeyList(size, allowedKeys, side, fromX, fromY, toX, toY, board);
 }
 
 int checkKnight(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
