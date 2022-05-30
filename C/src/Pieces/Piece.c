@@ -246,7 +246,15 @@ int checkRook(int side, int fromX, int fromY, int toX, int toY, int board[8][8])
 }
 
 int checkQueen(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
-  return 0;
+  int ar = ra(side, fromX, fromY, toX, toY, board);
+  int br = rb(side, fromX, fromY, toX, toY, board);
+  int cr = rc(side, fromX, fromY, toX, toY, board);
+  int dr = rd(side, fromX, fromY, toX, toY, board);
+  int ab = ba(side, fromX, fromY, toX, toY, board);
+  int bB = bb(side, fromX, fromY, toX, toY, board);
+  int cb = bc(side, fromX, fromY, toX, toY, board);
+  int db = bd(side, fromX, fromY, toX, toY, board);
+  return (ab || bB || cb || db || ar || br || cr || dr);
 }
 
 int checkBishop(int side, int fromX, int fromY, int toX, int toY, int board[8][8]) {
