@@ -11,12 +11,13 @@ private:
     std::string representation;
 
 public:
-    King(bool side, int value, const std::string &representation, bool side1, int value1,
-         const std::string &representation1);
+    King(bool side, int value, const std::string &representation);
 
     bool checkMove(Piece board[8][8], int move[], bool side) override;
 
     virtual ~King();
+
+    const std::string &getRepresentation() ;
 
 };
 

@@ -23,18 +23,16 @@ void Piece::setValue(int value) {
     Piece::value = value;
 }
 
-const std::string &Piece::getRepresentation() const {
-    return representation;
-}
-
-void Piece::setRepresentation(const std::string &representation) {
-    Piece::representation = representation;
-}
-
 Piece::~Piece() {
 
+}
+
+const std::string &Piece::getRepresentation() {
+    return this->representation;
 }
 
 bool Piece::checkMove(Piece (*board)[8], int *move, bool side) {
     return false;
 }
+
+Piece::Piece() {}

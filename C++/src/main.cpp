@@ -6,6 +6,7 @@ int main() {
     Movement movement;
     movement.dearScreen();
     Board board = new Board(movement.chooseColor());
+    board.printBoard();
     while(!board.isWinner()) {
         movement.move(board);
         board.setCurrentSide(!board.isCurrentSide());

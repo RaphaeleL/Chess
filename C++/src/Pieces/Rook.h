@@ -11,12 +11,14 @@ private:
     std::string representation;
 
 public:
-    Rook(bool side, int value, const std::string &representation, bool side1, int value1,
-         const std::string &representation1);
+    Rook(bool side, int value, const std::string &representation);
 
     bool checkMove(Piece board[8][8], int move[], bool side);
 
     virtual ~Rook();
+
+    const std::string &getRepresentation() ;
+
 
 };
 

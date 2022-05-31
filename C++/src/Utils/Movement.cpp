@@ -28,10 +28,10 @@ bool Movement::isFree(Board board, int x, int y, bool mySide, Piece fromPiece) {
 }
 
 bool Movement::chooseColor() {
-    std::string input;
-    std::cout << "Which color? (W/b) > ";
-    std::getline(std::cin, input);
-    return input == "w" ? true : false;
+    //std::string input;
+    //std::cout << "Which color? (W/b) > ";
+    //std::getline(std::cin, input);
+    return true; //input == "w" ? true : false;
 }
 
 bool Movement::inBounds(int x, int y) {

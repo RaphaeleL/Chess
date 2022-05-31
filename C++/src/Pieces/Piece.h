@@ -11,6 +11,8 @@ private:
     std::string representation;
 
 public:
+    Piece();
+
     virtual ~Piece();
 
     Piece(bool side, int value, const std::string &representation);
@@ -29,9 +31,7 @@ public:
 
     void setValue(int value);
 
-    const std::string &getRepresentation() const;
-
-    void setRepresentation(const std::string &representation);
+    virtual const std::string &getRepresentation();
 
 };
 
