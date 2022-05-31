@@ -34,7 +34,7 @@ $ go run main.go
 
 ### C / C++
 
-> Currently the C++ project is only a copied and adapted variant of the C project. Generally no problem, this is also a valid way to program C++. Nevertheless, an OOP variant is in development. The main focus is on new languages. Therefore the OOP variant of the C++ project may take some time. 
+> Currently the C++ project is only a copied and adapted variant of the C project. Generally no problem, this is also a valid way to program C++. Nevertheless, an [OOP variant](https://github.com/RaphaeleL/Chess/tree/C++_OOP/C++) is in development. The main focus is on new languages. Therefore the OOP variant of the C++ project may take some time. 
 
 ```bash
 $ mkdir build; cd build
@@ -49,5 +49,6 @@ There are plenty of other languages that should be implemented in this project. 
 
 ## Contact
 
-- If you have discovered any bugs or have any further ideas for optimization or improvement, feel free to contact me. Feel free to leave suggestions for additional languages.
+If you have discovered any bugs or have any further ideas for optimization or improvement, feel free to contact me. Feel free to leave suggestions for additional languages.
+
 
