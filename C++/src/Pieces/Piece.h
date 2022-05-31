@@ -5,27 +5,21 @@
 
 class Piece {
 
-private:
-    bool side;
-    int value;
-    std::string representation;
-
 public:
-    bool isSide() const;
-    void setSide(bool side);
-    int getValue() const;
-    void setValue(int value);
-    const std::string &getRepresentation() const;
-    void setRepresentation(const std::string &representation);
+    static int cap;
 
-    Piece();
-    Piece(std::string representation);
-    Piece(bool side, std::string representation);
-    Piece(bool side, int value, std::string representation);
+    int checkKeyList(int size, int allowedKeys[cap][2], int side, int fromX, int fromY, int toX, int toY, int board[8][8]);
+    int inBounds(int x, int y);
 
-    bool checkMove(Piece board[8][8], int move[], bool side);
+    int checkRook(int side, int fromX, int fromY, int toX, int toY, int board[8][8]);
+    int checkBishop(int side, int fromX, int fromY, int toX, int toY, int board[8][8]);
+    int checkKnight(int side, int fromX, int fromY, int toX, int toY, int board[8][8]);
+    int checkKing(int side, int fromX, int fromY, int toX, int toY, int board[8][8]);
+    int checkQueen(int side, int fromX, int fromY, int toX, int toY, int board[8][8]);
+    int checkPawn(int side, int fromX, int fromY, int toX, int toY, int board[8][8]);
+
+    int check(int fromY, int fromX, int toY, int toX, int board[8][8]);
 
 };
-
 
 #endif //C_PIECE_H

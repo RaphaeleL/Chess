@@ -4,34 +4,46 @@ Movement::Movement() {
 
 }
 
-bool Movement::isAllowed(std::list<int> allowedMovements, int move[]) {
-    return false;
+int Movement::getPosition(char c) {
+    return 0;
+}
+
+int Movement::getFromX() {
+    return 0;
+}
+
+int Movement::getFromY() {
+    return 0;
+}
+
+int Movement::getToX() {
+    return 0;
+}
+
+int Movement::getToY() {
+    return 0;
 }
 
 void Movement::dearScreen() {
 
 }
 
-bool Movement::isFree(Board board, int x, int y, bool mySide, Piece fromPiece) {
-    return false;
-}
-
-bool Movement::chooseColor() {
-    return false;
-}
-
-bool Movement::inBounds(int x, int y) {
-    return false;
-}
-
-int Movement::letterToNumber(std::string movement) {
+int Movement::chooseColor() {
     return 0;
 }
 
-std::string Movement::getInput(Board board) {
-    return "";
+void Movement::getPlayerInput(int side) {
+
 }
 
-void Movement::move(Board board) {
+int Movement::checkWinner(int (*board)[8]) {
+    return 0;
+}
+
+void Movement::handleWinner(int side) {
+
+}
+
+void Movement::setCoords(int counter, int mod) {
 
 }

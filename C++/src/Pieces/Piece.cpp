@@ -1,45 +1,38 @@
 #include "Piece.h"
 
-Piece::Piece() {
-
+int Piece::checkKeyList(int size, int allowedKeys[cap][2], int side, int fromX, int fromY, int toX, int toY,
+                        int (*board)[8]) {
+    return 0;
 }
 
-Piece::Piece(std::string representation) {
-
+int Piece::inBounds(int x, int y) {
+    return 0;
 }
 
-Piece::Piece(bool side, std::string representation) {
-
+int Piece::checkRook(int side, int fromX, int fromY, int toX, int toY, int (*board)[8]) {
+    return 0;
 }
 
-Piece::Piece(bool side, int value, std::string representation) {
-
+int Piece::checkBishop(int side, int fromX, int fromY, int toX, int toY, int (*board)[8]) {
+    return 0;
 }
 
-bool Piece::isSide() const {
-    return side;
+int Piece::checkKnight(int side, int fromX, int fromY, int toX, int toY, int (*board)[8]) {
+    return 0;
 }
 
-void Piece::setSide(bool side) {
-    Piece::side = side;
+int Piece::checkKing(int side, int fromX, int fromY, int toX, int toY, int (*board)[8]) {
+    return 0;
 }
 
-int Piece::getValue() const {
-    return value;
+int Piece::checkQueen(int side, int fromX, int fromY, int toX, int toY, int (*board)[8]) {
+    return 0;
 }
 
-void Piece::setValue(int value) {
-    Piece::value = value;
+int Piece::checkPawn(int side, int fromX, int fromY, int toX, int toY, int (*board)[8]) {
+    return 0;
 }
 
-const std::string &Piece::getRepresentation() const {
-    return representation;
-}
-
-void Piece::setRepresentation(const std::string &representation) {
-    Piece::representation = representation;
-}
-
-bool Piece::checkMove(Piece board[8][8], int move[], bool side) {
-    return false;
+int Piece::check(int fromY, int fromX, int toY, int toX, int (*board)[8]) {
+    return 0;
 }

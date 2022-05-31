@@ -11,17 +11,18 @@
 class Movement {
 
 public:
-
     Movement();
-    bool isAllowed(std::list<int> allowedMovements, int move[]);
+    int getPosition (char c);
+    int getFromX();
+    int getFromY();
+    int getToX();
+    int getToY();
     void dearScreen();
-    bool isFree(Board board, int x, int y, bool mySide, Piece fromPiece);
-    bool chooseColor();
-    bool inBounds(int x, int y);
-    int letterToNumber(std::string movement);
-    std::string getInput(Board board);
-    void move(Board board);
-
+    int chooseColor();
+    void getPlayerInput(int side);
+    int checkWinner(int board[8][8]);
+    void handleWinner(int side);
+    void setCoords(int counter, int mod);
 };
 
 

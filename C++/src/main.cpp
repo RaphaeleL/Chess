@@ -1,17 +1,18 @@
 #include <iostream>
-#include "./Pieces/Piece.h"
 #include "./Utils/Movement.h"
 
 int main() {
-    Movement movement;
-    movement.dearScreen();
-    Board board = new Board(movement.chooseColor());
-    while(!board.isWinner()) {
-        movement.move(board);
-        board.setCurrentSide(!board.isCurrentSide());
-        board.checkWinner();
+    Board *board = new Board();
+    Movement *movement = new Movement();
+    movement->dearScreen();
+    int side = 1; // WHITE
+    board->fillBoard();
+    board->printBoard();
+    while (movement->checkWinner(board->board)) {
+        movement->getPlayerInput(side);
+        board->makeMove(movement->getFromX(), movement->getFromY(), movement->getToX(), movement->getToY());
+        board->printBoard();
+        side = side * -1;
     }
-    board.handleWinner();
-    std::cout << "CppChess" << std::endl;
   return 0;
 }
