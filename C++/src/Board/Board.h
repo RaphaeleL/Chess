@@ -2,17 +2,26 @@
 #define C_BOARD_H
 
 #include "../Pieces/Piece.h"
+#include "../Pieces/Rook.h"
 
 class Board {
 
 private:
-    Piece board[8][8];
+    Piece myBoard[8][8] = {
+            {new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false)},
+            {new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false)},
+            {new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false)},
+            {new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false)},
+            {new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false)},
+            {new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false)},
+            {new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false)},
+            {new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false), new Piece(false)},
+    };
     bool winner = false;
     bool winnerSide;
     bool currentSide;
 
 public:
-
     Board(bool color);
     void setCurrentSide(bool currentSide);
     bool isCurrentSide();

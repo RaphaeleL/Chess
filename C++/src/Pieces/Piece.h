@@ -11,19 +11,27 @@ private:
     std::string representation;
 
 public:
+    virtual ~Piece();
+
+    Piece(bool side, int value, const std::string &representation);
+
+    Piece(bool side, int value);
+
+    Piece(bool side);
+
+    virtual bool checkMove(Piece board[8][8], int move[], bool side);
+
     bool isSide() const;
+
     void setSide(bool side);
+
     int getValue() const;
+
     void setValue(int value);
+
     const std::string &getRepresentation() const;
+
     void setRepresentation(const std::string &representation);
-
-    Piece();
-    Piece(std::string representation);
-    Piece(bool side, std::string representation);
-    Piece(bool side, int value, std::string representation);
-
-    bool checkMove(Piece board[8][8], int move[], bool side);
 
 };
 

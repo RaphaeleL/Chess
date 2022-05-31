@@ -11,10 +11,13 @@ private:
     std::string representation;
 
 public:
-    Queen(bool side, int value, const std::string &representation);
-    bool checkMove(Piece board[8][8], int move[], bool side);
+    Queen(bool side, int value, const std::string &representation, bool side1, int value1,
+         const std::string &representation1);
+
+    bool checkMove(Piece board[8][8], int move[], bool side) override;
+
     virtual ~Queen();
+
 };
 
-
-#endif //C_QUEEN_H
+#endif //C_Queen_H

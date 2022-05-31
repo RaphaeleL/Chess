@@ -1,20 +1,11 @@
 #include "Piece.h"
 
-Piece::Piece() {
+Piece::Piece(bool side, int value, const std::string &representation) : side(side), value(value),
+                                                                        representation(representation) {}
 
-}
+Piece::Piece(bool side, int value) : side(side), value(value) {}
 
-Piece::Piece(std::string representation) {
-
-}
-
-Piece::Piece(bool side, std::string representation) {
-
-}
-
-Piece::Piece(bool side, int value, std::string representation) {
-
-}
+Piece::Piece(bool side) : side(side) {}
 
 bool Piece::isSide() const {
     return side;
@@ -40,6 +31,10 @@ void Piece::setRepresentation(const std::string &representation) {
     Piece::representation = representation;
 }
 
-bool Piece::checkMove(Piece board[8][8], int move[], bool side) {
+Piece::~Piece() {
+
+}
+
+bool Piece::checkMove(Piece (*board)[8], int *move, bool side) {
     return false;
 }

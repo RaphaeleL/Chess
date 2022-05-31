@@ -1,5 +1,5 @@
-#ifndef C_QUEEN_H
-#define C_QUEEN_H
+#ifndef C_KING_H
+#define C_KING_H
 
 #include "./Piece.h"
 
@@ -11,10 +11,13 @@ private:
     std::string representation;
 
 public:
-    King(bool side, int value, const std::string &representation);
-    bool checkMove(Piece board[8][8], int move[], bool side);
+    King(bool side, int value, const std::string &representation, bool side1, int value1,
+         const std::string &representation1);
+
+    bool checkMove(Piece board[8][8], int move[], bool side) override;
+
     virtual ~King();
+
 };
 
-
-#endif //C_KING_H
+#endif //C_King_H
