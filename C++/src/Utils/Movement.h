@@ -11,7 +11,9 @@
 class Movement {
 
 public:
+    char coords[4];
     Movement();
+    void getInput(bool side);
     int getPosition (char c);
     int getFromX();
     int getFromY();
