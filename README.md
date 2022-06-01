@@ -43,6 +43,15 @@ $ make
 $ ./chess
 ```
 
+### Rust
+
+> Currently under active development
+
+```bash
+$ cd src 
+$ cargo run 
+```
+
 ## Progress 
 
 There are plenty of other languages that should be implemented in this project. The most common ones (Java, Python, C/C++, ...) have already been implemented. Other languages like Rust and Ruby of course will follow.  
