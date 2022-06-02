@@ -1,9 +1,13 @@
 .DS_Store 
 .*.swp
 .idea
+.ccls-cache/
+
 C/cmake-build-debug
 C/build
+
 C++/cmake-build-debug
 C++/build
-.ccls-cache/
+
+Rust/src/target
 
