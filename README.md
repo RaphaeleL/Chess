@@ -54,7 +54,9 @@ $ cargo run
 
 ## Progress 
 
-There are plenty of other languages that should be implemented in this project. The most common ones (Java, Python, C/C++, ...) have already been implemented. Other languages like Rust and Ruby of course will follow.  
+There are plenty of other languages that should be implemented in this project. The most common ones (Java, Python, C/C++, ...) have already been implemented. Other languages like Rust and Ruby of course will follow. 
+
+As written above, this is probably not the best, greatest and fastest way to implement chess. during the development process, some different approaches have crystallized, but the general logic of the game is the same. one crucial point is the implementation of the chess board and the allowed moves. the allowed moves, have quite some optimization potential, but do not lead to any big performance disadvantages. therefore, this implementation will be kept for the time being. another point is the chess board. how should pieces be represented? In Python and Java, this is achieved using a 2D array and objects. Each individual piece inherits from a 'piece' class. furthermore, in GoLang there is a variant which includes a 2D array using strings. C and C++ rely on integer values instead, further an OOP variant is created in C++ in addition. Rust on the other hand has an implementation with integer values and a 1D array.
 
 ## Contact
 
