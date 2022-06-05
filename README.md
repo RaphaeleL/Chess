@@ -58,6 +58,15 @@ There are plenty of other languages that should be implemented in this project. 
 
 As written above, this is probably not the best, greatest and fastest way to implement chess. during the development process, some different approaches have crystallized, but the general logic of the game is the same. one crucial point is the implementation of the chess board and the allowed moves. the allowed moves, have quite some optimization potential, but do not lead to any big performance disadvantages. therefore, this implementation will be kept for the time being. another point is the chess board. how should pieces be represented? In Python and Java, this is achieved using a 2D array and objects. Each individual piece inherits from a 'piece' class. furthermore, in GoLang there is a variant which includes a 2D array using strings. C and C++ rely on integer values instead, further an OOP variant is created in C++ in addition. Rust on the other hand has an implementation with integer values and a 1D array.
 
+## Todo
+
+Since all languages are based more or less on the same logic, there are generally still some open points which have not been implemented. 
+
+- Remi Detection 
+- Castling 
+- En-Passant
+- Fancy Shit (Flip Board, Stockfish, Hints, ...)
+
 ## Contact
 
 If you have discovered any bugs or have any further ideas for optimization or improvement, feel free to contact me. Feel free to leave suggestions for additional languages.
