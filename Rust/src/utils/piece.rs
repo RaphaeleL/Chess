@@ -17,3 +17,23 @@ pub fn check(movement: [i32; 4], board: &mut [i32; 64], side: bool) -> bool {
     }
     return result; 
 }
+
+fn check_pawn(movement: [i32; 4], board: &mut [i32; 64], side: bool) -> bool{
+    let allowed_movements = [[1, 0], [1, 1], [1, -1], 
+                                [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]];
+    let mut x; 
+    let mut y;
+    x = movement[1] - 2; 
+    y = movement[0];
+    if !side {
+        x = movement[1] + 2; 
+        y = movement[0];
+    }
+    let index = get_index(x, y, 8);
+    let to_index = get_index(movement[3], movement[2], 8);
+    if to_index == index {
+        return true;
+    } else {
+        return check_key_list_movements_pawn(allowed_movements, movement, board, side);
+    } 
+}
