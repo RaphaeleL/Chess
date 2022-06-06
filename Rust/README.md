@@ -1,4 +1,4 @@
-# CppChess 
+# RChess 
 
 Just a Terminal Chess ...
 
