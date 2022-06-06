@@ -32,8 +32,7 @@ class Movement():
         return False
 
     def chooseColor(self):
-        print("Hint: PyChess is still in development, so currently the \n " +
-                           "board does not rotate with the choice of color.\n")
+        print("Hint: PyChess is still in development, so there might be any issues\n")
         print("Which color? (W/b) > ", end="")
         playerInput = input()
         print("=================================================================")

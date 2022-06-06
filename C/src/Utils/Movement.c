@@ -18,8 +18,7 @@ void dearScreen() {
   printf(" ######   ######  ##     ## ########  ######   ######  \n");
   printf("======================================================\n");
   printf("======================================================\n");
-  printf("Hint: CChess is still in development, so currently the \n ");
-  printf("board does not rotate with the choice of color.\n");
+  printf("Hint: CChess is still in development, so there might be any issues \n ");
   printf("======================================================\n");
   printf("======================================================\n");
 } 

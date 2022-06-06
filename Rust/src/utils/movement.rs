@@ -11,8 +11,7 @@ pub fn dear_screen() {
     println!("##     ##  ######  ##     ## ########  ######   ######  ");
     println!("=======================================================");
     println!("=======================================================");
-    println!("Hint: RChess is still in development, so currently the");
-    println!("board does not rotate with the choice of color.");
+    println!("Hint: RChess is still in development, so there might be any issues");
     println!("=======================================================");
     println!("=======================================================");
 }
