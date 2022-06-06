@@ -45,13 +45,17 @@ $ ./chess
 
 ### Rust
 
-> Currently under active development
-
 ```bash
 $ cd src 
 $ cargo run 
 ```
 
+### Ruby
+
+```bash
+$ cd src 
+$ ruby main.rb 
+```
 ## Progress 
 
 There are plenty of other languages that should be implemented in this project. The most common ones (Java, Python, C/C++, ...) have already been implemented. Other languages like Rust and Ruby of course will follow. 
@@ -66,6 +70,7 @@ Since all languages are based more or less on the same logic, there are generall
 - Castling 
 - En-Passant
 - Fancy Shit (Flip Board, Stockfish, Hints, ...)
+- TUI (maybe just in one language)
 
 ## Contact
 
