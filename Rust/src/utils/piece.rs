@@ -33,6 +33,15 @@ fn eatable(to_piece: i32, side: bool) -> bool {
     return false;
 }
 
+fn check_knight(movement: [i32; 4], board: &mut [i32; 64], side: bool) -> bool{
+    let allowed_movements = [[2, 1], [2, -1], [-2, -1], [-2, 1], [1, 2], [1, -2], [-1, -2], [-1, 2]];
+    return check_key_list_movements(allowed_movements, movement, board, side);
+}
+fn check_king(movement: [i32; 4], board: &mut [i32; 64], side: bool) -> bool{
+    let allowed_movements = [[1, 1], [1, -1], [-1, 1], [-1, -1], [1, 0], [-1, 0], [0, -1], [0, 1]];
+    return check_key_list_movements(allowed_movements, movement, board, side);
+}
+
 fn check_pawn(movement: [i32; 4], board: &mut [i32; 64], side: bool) -> bool{
     let allowed_movements = [[1, 0], [1, 1], [1, -1], 
                                 [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]];
@@ -51,6 +60,32 @@ fn check_pawn(movement: [i32; 4], board: &mut [i32; 64], side: bool) -> bool{
     } else {
         return check_key_list_movements_pawn(allowed_movements, movement, board, side);
     } 
+}
+
+fn check_key_list_movements(allowed_movements: [[i32; 2]; 8], movement: [i32; 4], 
+                            board: &mut [i32; 64], side: bool) -> bool{
+    let mut x; 
+    let mut y;
+    let mut index: usize;
+    let mut from_index: usize;
+    let mut to_index: usize;
+    for i in 0..8 {
+        x = movement[1] - allowed_movements[i][0]; 
+        y = movement[0] - allowed_movements[i][1]; 
+        if !side {
+            x = movement[1] + allowed_movements[i][0]; 
+            y = movement[0] + allowed_movements[i][1]; 
+        }
+        index = get_index(x, y, 8);
+        from_index = get_index(movement[1], movement[0], 8);
+        to_index = get_index(movement[3], movement[2], 8);
+        if from_index != index {
+            if eatable(board[to_index], side) {
+                if to_index == index { return true; } 
+            }
+        }
+    } 
+    return false;
 }
 
 fn check_key_list_movements_pawn(allowed_movements: [[i32; 2]; 8], movement: [i32; 4], 
