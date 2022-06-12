@@ -33,6 +33,34 @@ fn eatable(to_piece: i32, side: bool) -> bool {
     return false;
 }
 
+fn check_rook(movement: [i32; 4], board: &mut [i32; 64], side: bool) -> bool{
+    let a = ra(movement, board, side); 
+    let b = rb(movement, board, side); 
+    let c = rc(movement, board, side); 
+    let d = rd(movement, board, side); 
+    return a || b || c || d;
+}
+
+fn check_bishop(movement: [i32; 4], board: &mut [i32; 64], side: bool) -> bool{
+    let a = ba(movement, board, side); 
+    let b = bb(movement, board, side); 
+    let c = bc(movement, board, side); 
+    let d = bd(movement, board, side); 
+    return a || b || c || d;
+}
+
+fn check_queen(movement: [i32; 4], board: &mut [i32; 64], side: bool) -> bool{
+    let ar = ra(movement, board, side); 
+    let br = rb(movement, board, side); 
+    let cr = rc(movement, board, side); 
+    let dr = rd(movement, board, side); 
+    let ab = ba(movement, board, side); 
+    let bbx = bb(movement, board, side); 
+    let cb = bc(movement, board, side); 
+    let db = bd(movement, board, side); 
+    return ar || br || cr || dr || ab || bbx || cb || db;
+}
+
 fn check_knight(movement: [i32; 4], board: &mut [i32; 64], side: bool) -> bool{
     let allowed_movements = [[2, 1], [2, -1], [-2, -1], [-2, 1], [1, 2], [1, -2], [-1, -2], [-1, 2]];
     return check_key_list_movements(allowed_movements, movement, board, side);
