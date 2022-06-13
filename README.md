@@ -1,5 +1,7 @@
 # Chess 
 
+
+
 Just a Terminal Chess in different Programming Languages
 
 ## Introduction
@@ -13,7 +15,7 @@ The games can be started in different ways. It could be loaded into an IDE of ch
 ### Java
 
 ```bash
-$ cd src
+$ cd Java/src
 $ javac Main.java 
 $ java Main
 ```
@@ -21,20 +23,22 @@ $ java Main
 ### Python
 
 ```bash
-$ cd src
+$ cd Python/src
 $ python3 main.py
 ```
 
 ### GoLang
 
 ```bash
-$ cd src
+$ cd GoLang/src
 $ go run main.go
 ```
 
 ### C / C++
 
 > Currently the C++ project is only a copied and adapted variant of the C project. Generally no problem, this is also a valid way to program C++. Nevertheless, an [OOP variant](https://github.com/RaphaeleL/Chess/tree/C++_OOP/C++) is in development. The main focus is on new languages. Therefore the OOP variant of the C++ project may take some time. 
+
+Navigate into the Main Directory, so `$ cd C` or `$ cd C++`.
 
 ```bash
 $ mkdir build; cd build
@@ -46,16 +50,35 @@ $ ./chess
 ### Rust
 
 ```bash
-$ cd src 
+$ cd Rust/src 
 $ cargo run 
 ```
 
 ### Ruby
 
 ```bash
-$ cd src 
+$ cd Ruby/src 
 $ ruby main.rb 
 ```
+
+### Perl 
+
+> Under Development
+
+```bash
+$ cd src 
+$ perl main.pl 
+```
+
+### Swift 
+
+> Under Development
+
+```bash
+$ cd Swift/src 
+$ swift main.swift
+```
+
 ## Progress 
 
 There are plenty of other languages that should be implemented in this project. The most common ones (Java, Python, C/C++, ...) have already been implemented. Other languages like Rust and Ruby of course will follow. 
@@ -69,9 +92,8 @@ Since all languages are based more or less on the same logic, there are generall
 - Remi Detection 
 - Castling 
 - En-Passant
-- Fancy Shit (Flip Board, Stockfish, Hints, ...)
-- TUI (maybe just in one language)
-
+- Fancy Shit (Flip Board, Stockfish, Hints, TUI, ...)
+    
 ## Contact
 
 If you have discovered any bugs or have any further ideas for optimization or improvement, feel free to contact me. Feel free to leave suggestions for additional languages.
