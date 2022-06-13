@@ -33,6 +33,178 @@ fn eatable(to_piece: i32, side: bool) -> bool {
     return false;
 }
 
+fn ba(movement: [i32; 4], board: &mut [i32; 64], side: bool) -> bool{
+    let mut x = movement[1] - 1;
+    let mut y = movement[0] - 1;
+    let mut index = get_index(x, y, 8);
+    let from_index = get_index(movement[1], movement[0], 8);
+    while index > 0 {
+        index = get_index(x, y, 8);
+        if side {
+            if board[index] < 0 { return false;
+            } else if (board[index] < 0) != (board[from_index] < 0) { return true;
+            } else if board[index] == 0 { return true; } 
+        } else {
+            if board[index] > 0 { return false;
+            } else if (board[index] > 0) != (board[from_index] > 0) { return true;
+            } else if board[index] == 0 { return true; } 
+        }
+        x = x - 1;
+        y = y - 1;
+    } 
+    return false;
+}
+
+fn bb(movement: [i32; 4], board: &mut [i32; 64], side: bool) -> bool{
+    let mut x = movement[1] + 1;
+    let mut y = movement[0] + 1;
+    let mut index = get_index(x, y, 8);
+    let from_index = get_index(movement[1], movement[0], 8);
+    while index > 0 {
+        index = get_index(x, y, 8);
+        if side {
+            if board[index] < 0 { return false;
+            } else if (board[index] < 0) != (board[from_index] < 0) { return true;
+            } else if board[index] == 0 { return true; } 
+        } else {
+            if board[index] > 0 { return false;
+            } else if (board[index] > 0) != (board[from_index] > 0) { return true;
+            } else if board[index] == 0 { return true; } 
+        }
+        x = x + 1;
+        y = y + 1;
+    } 
+    return false;
+}
+
+fn bc(movement: [i32; 4], board: &mut [i32; 64], side: bool) -> bool{
+    let mut x = movement[1] - 1;
+    let mut y = movement[0] + 1;
+    let mut index = get_index(x, y, 8);
+    let from_index = get_index(movement[1], movement[0], 8);
+    while index > 0 {
+        index = get_index(x, y, 8);
+        if side {
+            if board[index] < 0 { return false;
+            } else if (board[index] < 0) != (board[from_index] < 0) { return true;
+            } else if board[index] == 0 { return true; } 
+        } else {
+            if board[index] > 0 { return false;
+            } else if (board[index] > 0) != (board[from_index] > 0) { return true;
+            } else if board[index] == 0 { return true; } 
+        }
+        x = x - 1;
+        y = y + 1;
+    } 
+    return false;
+}
+
+fn bd(movement: [i32; 4], board: &mut [i32; 64], side: bool) -> bool{
+    let mut x = movement[1] + 1;
+    let mut y = movement[0] - 1;
+    let mut index = get_index(x, y, 8);
+    let from_index = get_index(movement[1], movement[0], 8);
+    while index > 0 {
+        index = get_index(x, y, 8);
+        if side {
+            if board[index] < 0 { return false;
+            } else if (board[index] < 0) != (board[from_index] < 0) { return true;
+            } else if board[index] == 0 { return true; } 
+        } else {
+            if board[index] > 0 { return false;
+            } else if (board[index] > 0) != (board[from_index] > 0) { return true;
+            } else if board[index] == 0 { return true; } 
+        }
+        x = x + 1;
+        y = y - 1;
+    } 
+    return false;
+}
+
+fn ra(movement: [i32; 4], board: &mut [i32; 64], side: bool) -> bool{
+    let mut x = movement[1] - 1;
+    let y = movement[0];
+    let mut index = get_index(x, y, 8);
+    let from_index = get_index(movement[1], movement[0], 8);
+    while index > 0 {
+        index = get_index(x, y, 8);
+        if side {
+            if board[index] < 0 { return false;
+            } else if (board[index] < 0) != (board[from_index] < 0) { return true;
+            } else if board[index] == 0 { return true; } 
+        } else {
+            if board[index] > 0 { return false;
+            } else if (board[index] > 0) != (board[from_index] > 0) { return true;
+            } else if board[index] == 0 { return true; } 
+        }
+        x = x - 1;
+    } 
+    return false;
+}
+
+fn rb(movement: [i32; 4], board: &mut [i32; 64], side: bool) -> bool{
+    let mut x = movement[1] + 1;
+    let y = movement[0];
+    let mut index = get_index(x, y, 8);
+    let from_index = get_index(movement[1], movement[0], 8);
+    while index > 0 {
+        index = get_index(x, y, 8);
+        if side {
+            if board[index] < 0 { return false;
+            } else if (board[index] < 0) != (board[from_index] < 0) { return true;
+            } else if board[index] == 0 { return true; } 
+        } else {
+            if board[index] > 0 { return false;
+            } else if (board[index] > 0) != (board[from_index] > 0) { return true;
+            } else if board[index] == 0 { return true; } 
+        }
+        x = x + 1;
+    } 
+    return false;
+}
+
+fn rc(movement: [i32; 4], board: &mut [i32; 64], side: bool) -> bool{
+    let x = movement[1];
+    let mut y = movement[0] + 1;
+    let mut index = get_index(x, y, 8);
+    let from_index = get_index(movement[1], movement[0], 8);
+    while index > 0 {
+        index = get_index(x, y, 8);
+        if side {
+            if board[index] < 0 { return false;
+            } else if (board[index] < 0) != (board[from_index] < 0) { return true;
+            } else if board[index] == 0 { return true; } 
+        } else {
+            if board[index] > 0 { return false;
+            } else if (board[index] > 0) != (board[from_index] > 0) { return true;
+            } else if board[index] == 0 { return true; } 
+        }
+        y = y + 1;
+    } 
+    return false;
+}
+
+fn rd(movement: [i32; 4], board: &mut [i32; 64], side: bool) -> bool{
+    let x = movement[1];
+    let mut y = movement[0] - 1;
+    let mut index = get_index(x, y, 8);
+    let from_index = get_index(movement[1], movement[0], 8);
+    while index > 0 {
+        index = get_index(x, y, 8);
+        if side {
+            if board[index] < 0 { return false;
+            } else if (board[index] < 0) != (board[from_index] < 0) { return true;
+            } else if board[index] == 0 { return true; } 
+        } else {
+            if board[index] > 0 { return false;
+            } else if (board[index] > 0) != (board[from_index] > 0) { return true;
+            } else if board[index] == 0 { return true; } 
+        }
+        y = y - 1;
+    } 
+    return false;
+}
+
 fn check_rook(movement: [i32; 4], board: &mut [i32; 64], side: bool) -> bool{
     let a = ra(movement, board, side); 
     let b = rb(movement, board, side); 
