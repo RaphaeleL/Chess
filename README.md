@@ -1,7 +1,5 @@
 # Chess 
 
-
-
 Just a Terminal Chess in different Programming Languages
 
 ## Introduction
@@ -76,7 +74,8 @@ $ perl main.pl
 
 ```bash
 $ cd Swift/src 
-$ swift main.swift
+$ swiftc main.swift Board/board.swift Utils/movement.swift Pieces/piece.swift -o chess 
+$ ./chess
 ```
 
 ## Progress 
