@@ -59,15 +59,6 @@ $ cd Ruby/src
 $ ruby main.rb 
 ```
 
-### Perl 
-
-> Under Development
-
-```bash
-$ cd src 
-$ perl main.pl 
-```
-
 ### Swift 
 
 > Under Development
