@@ -54,6 +54,8 @@ $ cargo run
 
 ### Ruby
 
+> Under Development
+
 ```bash
 $ cd Ruby/src 
 $ ruby main.rb 
@@ -68,6 +70,13 @@ $ cd Swift/src
 $ swiftc main.swift Board/board.swift Utils/movement.swift Pieces/piece.swift -o chess 
 $ ./chess
 ```
+
+### Languages
+
+- Zig
+- Kotlin   
+- Own Language  
+- ...
 
 ## Progress 
 
