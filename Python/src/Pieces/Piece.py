@@ -11,7 +11,7 @@ class Empty(Piece):
     def __init__(self):
         self.side = None 
         self.value = -1
-        self.representation = "o"
+        self.representation = "-"
     
     def __str__(self): 
         return self.representation

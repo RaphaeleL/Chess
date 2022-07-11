@@ -1,6 +1,7 @@
 from Pieces.Piece import Empty, Piece
 
-class Movement():
+
+class Movement:
     def __init__(self):
         pass
 
@@ -22,7 +23,6 @@ class Movement():
         print("=================================================================")
 
     def isFree(self, board, x, y, mySide, fromPiece):
-        #if isinstance(board.getFigure(x,y).__class__, type(Empty())):
         if type(board.getFigure(x, y)) is Empty().__class__:
             return True
         if fromPiece.side != board.getFigure(x, y).side:
@@ -45,11 +45,11 @@ class Movement():
     def prepare(self, movement):
         move = [letter for letter in movement]
         return [
-            self.letterToNumber(move[0]) - 1, 
-            int(move[1]) - 1, 
-            self.letterToNumber(move[2]) - 1, 
-            int(move[3]) - 1
-            ]
+            self.letterToNumber(move[0]) - 1,
+            int(move[1]) - 1,
+            self.letterToNumber(move[2]) - 1,
+            int(move[3]) - 1,
+        ]
 
     def letterToNumber(self, letter):
         return ord(letter) - 96
