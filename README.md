@@ -54,8 +54,6 @@ $ cargo run
 
 ### Ruby
 
-> Under Development
-
 ```bash
 $ cd Ruby/src 
 $ ruby main.rb 
